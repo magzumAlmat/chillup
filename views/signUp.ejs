@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="/style.css"/>
+    </head>
+    <body>
+
+        <div class="component-1">
+            <div class=""
+            style="background: #FFFFFF">
+            <div style="   
+             display: flex;
+            margin-left: 5%;
+            margin-right: 5%;
+            align-items: center;">
+                  <p class="decode-blog" >Decode Blog</p>
+                  <div class="group-29"></div>
+                  <div class="group-29"></div>
+                  <div class="group-28">
+                      <input placeholder="Поиск по блогам" class="poisk-po-blogam"></input>
+  
+                      <button class="najtiButton">
+                          <img src="/images/Vector.png" class="najti"/>
+  
+                          Найти
+                      </button>
+                  </div>
+             
+             
+              <div class="group-29"></div>
+              <div class="group-27">
+                <!-- <p class="registracija"> -->
+                  <a class="najtiButton" href="/register" style="text-decoration: none;justify-content: center;width: 7rem;">
+                  Регистрация
+                  </a>
+              <!-- </p> -->
+            </div>
+            <div class="group-26">
+             
+                <a class="najtiButton" style="text-decoration: none;align-items: center;justify-content: center;width: 6rem;"  style="text-decoration: none;" href="/signin">Вход</a>
+             
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-wrapper-three" style="padding: 0px 0 0 0px;">
+            <div class="box-main" style="width: 100%;">
+                <div style="width: 100%;  margin: 0px 1%; display: flex; justify-content: center;">
+                    <div>
+                        <h3 style="text-align: center;">Регистрация</h3>
+                        <!-- ---------------------------------------------------------- -->
+                        <form action="/api/signup/"  method='post' class="form">
+                        <div>
+                            <input type="email"  placeholder="Введите email" style="   background-color: #FFFFFF; height: 20px;
+                        width: 100%;" name="email" />
+                        </div>
+                        <br>
+                          <div><input type="text"  placeholder="Введите полное имя" style="   background-color: #FFFFFF; height: 20px;
+                          width: 100%;" name="full_name"/>
+                          </div>
+                          <br>
+                          <div><input type="password"  placeholder="Введите пароль" style="   background-color: #FFFFFF; height: 20px;
+                            width: 100%;" name="password"/>
+                            </div>
+                            <br>
+                            <div><input type="password"  placeholder="Подтвердите пароль" style="   background-color: #FFFFFF; height: 20px;
+                                width: 100%;" name="re_password"/>
+                                </div>
+                                <br>
+                               
+                                
+                          <button  type="submit" class="" style="width: 105%;background-color: #00A2DC; color: white;">Зарегистрироваться</button>
+                    </form>
+
+                        </div>
+                    
+                </div>
+
+                    <!--Card2 ---------------------------------------------------------------------------- -->
+                    <!-- <div class="card">
+                      <div class="title">
+                        <img alt="" class="image-1" src="images/img2.png"/>  
+                       
+                       
+                      </div>
+                      <div class="article">
+                        <p style="font-family: Roboto,sans-serif;
+                        font-size: 28px;
+                        font-weight: 400;
+                        line-height: 24px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        ">
+                        Разработчики изобрели методологию высокоскоростного программирования
+                      </p>
+                          <p class="osen-2020-goda-stala-plodotvornym-vreme">
+                              Осень 2020 года стала плодотворным временем для
+                                          специалистов Webix.
+                              <br/>
+                              <br/>
+                              Команда Webix выпустила восьмую версию
+                                          библиотеки пользовательского интерфейса Webix с
+                                          двумя новыми комплексными виджетами. Первый -
+                                          зто Scheduler, о котором мы подробно говорили
+                                          ранее. Второй виджет - это Gantt chart в
+                                          JavaScript. Подробную информацию об этом виджете
+                                          Вы можете найти в статье.
+                              <br/>
+                              <br/>
+                              Ноябрь продолжает тенденцию, и мы спешим
+                                          поделиться с Вами новым комплексным виджетом
+                                          Report Manager. Давайте рассмотрим его
+                          </p>
+
+                          <p style="font-family: Roboto,sans-serif;
+                          font-size: 28px;
+                          font-weight: 400;
+                          line-height: 24px;
+                          letter-spacing: 0em;
+                          text-align: left;
+                          ">
+
+                          Что такое комплексные виджеты Webix?
+
+                          </p>
+
+
+                          <div class="box">
+                              <div class="box">
+                                  <div style="width: 20%;padding: 10px;">
+                                      <img src="images/calendar.png"/>
+                                  </div>
+
+                                  <div style="width:80%">
+                                      <p class="">26.06.2020</p>
+                                  </div>
+
+                              </div>
+
+
+                              <div class="box">
+                                  <div style="width: 20%;padding: 10px;">
+                                      <img src="images/eye.png"/>
+                                  </div>
+
+                                  <div style="width:80%">
+                                      <p class="">21</p>
+                                  </div>
+
+                              </div>
+
+
+                              <div class="box">
+                                  <div style="width: 20%;padding: 10px;">
+                                      <img alt="" class="message" src="https://static.overlay-tech.com/assets/27ff86e9-732f-4068-87e7-3a5384fa319d.svg"/>
+                                  </div>
+
+                                  <div style="width:80%">
+                                      <p class="">4</p>
+                                  </div>
+
+                              </div>
+
+
+                              <div class="box">
+                                  <div style="width: 20%;padding: 10px;">
+                                      <img alt="" class="forums" src="https://static.overlay-tech.com/assets/32823ebb-3477-4992-9bf0-0b01dbc2b3eb.svg"/>
+                                  </div>
+
+                                  <div style="width:80%">
+                                      <p class="">Веб-разработка</p>
+                                  </div>
+
+                              </div>
+
+                              <div class="box">
+                                  <div style="width: 20%;padding: 10px;">
+                                      <img src="images/user.png"/>
+                                  </div>
+
+                                  <div style="width:80%">
+                                      <p class="">Nast1289</p>
+                                  </div>
+
+                              </div>
+
+
+                          </div>
+
+
+                      </div>
+                  </div> -->
+                </div>
+
+
+            
+                
+       
+            </div>
+        </div>
+
+
+       
+                <!-- <img alt="" class="line-1" src="https://static.overlay-tech.com/assets/217a8777-d638-4edd-9084-0293a36069e0.png"/> -->
+            </div>
+        </body>
+    </body>
+</html>

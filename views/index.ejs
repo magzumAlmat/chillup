@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="/style.css"/>
+    </head>
+    <body>
+
+        <div class="component-1">
+            <div class="" style="background: #FFFFFF">
+                <div style="
+                                                           display: flex;
+                                                          margin-left: 5%;
+                                                          margin-right: 5%;
+                                                          align-items: center;">
+                    <p>
+                        <a href="/" style="text-decoration: none;" class="decode-blog">Chillup</a>
+                    </p>
+                    <div class="group-29"></div>
+                    <div class="group-29"></div>
+                    <!-- <form class="group-28">
+                        <input  name="search" placeholder="Поиск по блогам" class="poisk-po-blogam"></input>
+
+                    <button class="najtiButton" type="submit">
+                        <img src="images/Vector.png" class="najti"/>
+
+                        Найти
+                    </button>
+                </form> -->
+
+
+                <%if (user._id){ %>
+                    <a href="/profile/<%=user._id%>" class="href">
+                        <div class="group-26">
+                            <img src="/images/avatar.png" alt="" width="73" height="73"></div>
+                    </a>
+                <%}else{%>
+                    <div class="group-27">
+
+                        <a class="najtiButton" href="/register" style="text-decoration: none;justify-content: center;width: 7rem;">
+                            Регистрация
+                        </a>
+
+                    </div>
+                    <div class="group-26">
+
+                        <a class="najtiButton" style="text-decoration: none;align-items: center;justify-content: center;width: 6rem;" style="text-decoration: none;" href="/signin">Вход</a>
+
+                    </div>
+                <%}%>
+            </div>
+        </div>
+
+        <div class="flex-wrapper-three">
+            <div class="box-main">
+        Зарегистрируйтесь либо войдите 
+        </div>
+        </div>
+        <!-- <div class="flex-wrapper-three">
+            <div class="box-main">
+                <div style="width: 80%;background: #FFFFFF;    margin: 0px 1%;">
+                    <%posts.forEach(item=>{
+                                    for (i in user) {
+                                        // console.log(i)
+                                    }
+                                    // if (item.author==allUsers._id){
+                                    //     console.log('item author=   ',item.author)
+                                    //     console.log('user._id=   ',allUsers._id)
+                                    //     console.log('allUsers=   ',allUsers.full_name)
+                                    
+                                
+                                    %>
+                    <div class="card">
+
+                        <div class="article">
+                            <img alt="" class="image-1" src="<%=item.image%>"/>
+
+
+                            <div class="box">
+                                <div class="box">
+                                    <div style="width: 95%;">
+                                        <%=item.title%>
+                                    </div>
+
+                                    <div style="width:5%">
+                                        <a href="/more/<%=item._id%>">
+                                            Подробнее</a>
+                                    </p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="obzor-report-manager-ot-webix">
+                            <%=item.titleDescription%><br/>
+                        </p>
+                        <p class="osen-2020-goda-stala-plodotvornym-vreme">
+
+                            <br/>
+                            <%=item.posttext%>
+                        </p>
+
+                        <div class="box">
+                            <div class="box">
+                                <div style="width: 20%;padding: 10px;">
+                                    <img src="/images/calendar.png"/>
+                                </div>
+
+                                <div style="width:80%">
+                                    <p class=""><%=item.date%></p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="box">
+                                <div style="width: 20%;padding: 10px;">
+                                    <img src="/images/eye.png"/>
+                                </div>
+
+                                <div style="width:80%">
+                                    <p class="">21</p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="box">
+                                <div style="width: 20%;padding: 10px;">
+                                    <img alt="" class="message" src="https://static.overlay-tech.com/assets/27ff86e9-732f-4068-87e7-3a5384fa319d.svg"/>
+                                </div>
+
+                                <div style="width:80%">
+                                    <p class="">4</p>
+                                </div>
+                            </div>
+
+
+                            <div class="box">
+                                <div style="width: 20%;padding: 10px;">
+                                    <img alt="" class="forums" src="https://static.overlay-tech.com/assets/32823ebb-3477-4992-9bf0-0b01dbc2b3eb.svg"/>
+                                </div>
+
+                                <div style="width:80%">
+                                    <p class=""><%=item.category.name%></p>
+                                </div>
+
+                            </div>
+
+
+                            
+                            <a href="/userposts/<%=item.author._id%>">
+                            <div class="box">
+                                <div style="width: 20%;padding: 10px;">
+                                    <img src="images/user.png"/>
+                                </div>
+
+                                <div style="width:80%">
+                                    <p class=""><%=item.author.full_name%></p>
+                                </div>
+
+                            </div>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+
+              
+
+            <%
+                }) %>
+                <div class="pages" style="margin: 0 5%;">
+                <% 
+                    let localsString = ''
+                    console.log('locals.search=  ',locals.search)
+                        if(locals.Categories){
+                            localsString = `Categories=${locals.Categories}&`
+                        }
+                        if(locals.search){
+                            localsString = `search=${locals.search}&`
+                        }
+                    for(let i=0;i<pages;i++){
+                        console.log('pages=    ',pages)
+                %>
+                <a href="?<%=localsString%>page=<%=i%>"><%=i+1%></a>
+                <%
+                    }
+                %>
+            </div>
+                 </div>
+
+      
+
+        <div style="width: 20%;background: #FFFFFF;margin-right: 10px;">
+            <div class="cards-blank">
+
+                <p class="kategorii">Категории</p>
+                <% category.forEach(cat => {%>
+                    
+                    <a class="prognozy-v-it" href="?Categories=<%=cat.key%>"><%=cat.name%></a>
+                    <br>
+                <% }) %>
+            </div>
+
+        </div> -->
+    </body>
+</html>
+

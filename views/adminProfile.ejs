@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="/style.css"/>
+    </head>
+    <body>
+        <%- include('./partials/head'); %>
+
+
+        <div class="component-1">
+            <div class="" style="background: #FFFFFF">
+                <div style="
+                                                                                                                                                           display: flex;
+                                                                                                                                                          margin-left: 5%;
+                                                                                                                                                          margin-right: 5%;
+                                                                                                                                                          align-items: center;">
+                    <p>
+                        <a href="/" style="text-decoration: none;" class="decode-blog">Chillup</a>
+                    </p>
+                    <div class="group-29"></div>
+                    <div
+                        class="group-29">
+                        <!-- <button class="najtiButton">Редактировать</button> -->
+
+
+                        <button>
+                            <a class="" href="/addBlog">Добавить товар</a>
+                        </button>
+
+                        <button>
+                            <a class="" href="/api/signout/">
+                                Signout
+                            </a>
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="group-28"><!-- <input placeholder="Поиск по блогам" class="poisk-po-blogam"></input>
+                                                                                    
+                                                                                                        <button class="najtiButton">
+                                                                                                            <img src="/images/Vector.png" class="najti"/>
+                                                                                    
+                                                                                                            Найти
+                                                                                                        </button> -->
+                    </div>
+                    <div class="group-29"></div>
+                    <div class="group-29"></div>
+                    <p><%=user.full_name%></p>
+                    <%if (user._id){ 
+                        console.log('user._id=   ',user._id)%>
+                        <a href="/profile/<%=user._id%>" class="href">
+                            <div class="group-26">
+                                <img src="/images/avatar.png" alt="" width="73" height="73"></div>
+                        </a>
+                    <%}else{%>
+                        <div class="group-27">
+
+                            <a class="najtiButton" href="/register" style="text-decoration: none;justify-content: center;width: 7rem;">
+                                Регистрация
+                            </a>
+
+                        </div>
+                        <div class="group-26">
+
+                            <a class="najtiButton" style="text-decoration: none;align-items: center;justify-content: center;width: 6rem;" style="text-decoration: none;" href="/signin">Вход</a>
+
+                        </div>
+                    <%}%>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+
+                <%  posts.forEach(item=>{
+                            if (item.author._id==user.id){
+                            %>
+
+
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <img src="<%=item.image%>" class="card-img-top" alt="..." height="200" >
+                            <div class="card-body">
+                                <h5 class="card-title"><%=item.title%></h5>
+
+                                <p class="card-text"><%=item.titleDescription%></p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                                <div class="dropdown">
+                                    <img src="/images/dotted.png" alt="">
+                                    Еще
+                                    <div class="dropdown-content">
+
+                                        <p style="">
+                                            <a href="/editpost/<%=item._id%>">
+                                                Редактировать</a>
+                                        </p>
+                                        <form method="POST" action="/api/deletepost/">
+                                            <input type="hidden" name="id" value="<%=item._id %>"/>
+                                            <button type="submit">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <p></p>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Дата создания:</th>
+                                        <th scope="col">Количество штук:</th>
+                                        <th scope="col">Категория товара:</th>
+                                       
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                     
+                                        <td><%=item.date%></td>
+                                        <td><%=item.defaultQuantity%></td>
+                                        <td><%=item.category.name%></td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                    </table>
+
+                             
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                <% }}) %>
+
+
+            </div>
+        </div>
+    </body>
+</html></div></div></div></div></body></html></div></body></html> </div></div></body></body></html>
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="/style.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <p class="decode-blog">Chillup</p>
+                </div>
+                <div class="col-sm-8">
+                    <div style="background: #FFFFFF;margin-right: 10px;">
+                        <div
+                            class="cards-blank">
+                            <!-- Include here the component "CardsBlank" -->
+
+
+                            <% category.forEach(cat => {%>
+                                <a class="prognozy-v-it" href="/<%=cat.key%>"><%=cat.name%></a>
+                            <%
+                       }) %>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <img src="images/avatar.png" alt="" width="73" height="73">
+                </div>
+            </div>
+        </div>
+
+        <div class="component-1">
+
+            <%- include('./partials/head'); %>
+
+            <div class="flex-wrapper-three">
+                <div class="box-main" style="width: 100%;">
+                    <div style="background: #FFFFFF;
+                                                          margin: 0px 1%;">
+                        <div class="card">
+                           
+                                <div style="">
+                                    <br>
+                                    <label for="">Выберите товар</label>
+
+                                    <div class="row">
+                                        <% posts.forEach(cat => {
+                                    // console.log('cat=', cat)
+                                    %>
+
+
+                                        <div class="col-sm-4">
+                                            <div class="card">
+                                                <img src="<%=cat.image%>" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><%=cat.title%></h5>
+                                                    <p class="card-text"><%=cat.titleDescription%></p>
+                                                    <a href="/createdeal/<%=cat._id%>" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    <%
+                                }) %>
+
+                                </div>
+
+                            </div>
+                            <br>
+
+
+
+                            
+
+
+                            <br>
+                            <div style="">
+                                <input type="text" placeholder="Введите описание блога" style="   background-color: #FFFFFF; height: 180px;
+                                                                width: 100%;" name="titleDescription"/>
+
+                            </div>
+                            <div style="">
+                                <input type="text" placeholder="Введите основной текст" style="   background-color: #FFFFFF; height: 180px;
+                                                                width: 100%;" name="posttext"/>
+                            </div>
+
+
+                            <br>
+                
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <!-- <img alt="" class="line-1" src="https://static.overlay-tech.com/assets/217a8777-d638-4edd-9084-0293a36069e0.png"/> -->
+    </body>
+</html></div></body></body></html>
+

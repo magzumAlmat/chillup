@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Film</title>
+</head>
+<body>
+  <h1>Delete Film</h1>
+  <p>Are you sure you want to delete this film?</p>
+  <p><%= film.title %></p>
+  <form action="/api/deletepost/" method="POST">
+    <input type="hidden" id="id" name="id" value="<%= posts._id %>">
+    <button type="submit">Delete Film</button>
+  </form>
+</body>
+</html>

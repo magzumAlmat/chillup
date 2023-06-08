@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="/style.css"/>
+    </head>
+    <body>
+
+      
+        <%- include('./partials/head'); %>
+        <div class="component-1">
+            <div class="" style="background: #FFFFFF">
+                <div style="
+                                                                                                           display: flex;
+                                                                                                          margin-left: 5%;
+                                                                                                          margin-right: 5%;
+                                                                                                          align-items: center;">
+                    <p>
+                        <a href="/" style="text-decoration: none;" class="decode-blog">Chillup</a>
+                    </p>
+                    <div class="group-29"></div>
+                    <div class="group-29">
+                        <a class="najtiButton" href="/adddeal">Создать сделку</a>
+                   
+                        <a class="najtiButton" href="/api/signout/" style="text-decoration: none;justify-content: center;width: 7rem;">
+                            Signout
+                        </a>
+                    </div>
+
+
+                  
+                <div class="group-29"></div>
+                <div class="group-29"></div>
+                <p><%=user.full_name%></p>
+                <%if (user._id){ 
+                        console.log('user._id=   ',user._id)%>
+                    <a href="/profile/<%=user._id%>" class="href">
+                        <div class="group-26">
+                            <img src="/images/avatar.png" alt="" width="73" height="73"></div>
+                    </a>
+                <%}else{%>
+                    <div class="group-27">
+
+                        <a class="najtiButton" href="/register" style="text-decoration: none;justify-content: center;width: 7rem;">
+                            Регистрация
+                        </a>
+
+                    </div>
+                    <div class="group-26">
+
+                        <a class="najtiButton" style="text-decoration: none;align-items: center;justify-content: center;width: 6rem;" style="text-decoration: none;" href="/signin">Вход</a>
+
+                    </div>
+                <%}%>
+
+
+            </div>
+        </div>
+
+        <div class="">
+            <div class="">
+                <div style="">
+
+                 <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Имя продавца:</th>
+                                        <th scope="col">Дата поставки:</th>
+                                        <th scope="col">ФИО заказчика:</th>
+                                        <th scope="col">Наименование организации:</th>
+                                        <th scope="col">Aдрес:</th>
+                                        <th scope="col">Товар:</th>
+                                        <th scope="col">Количество на складе:</th>
+                                        <th scope="col">Заказаное количество:</th>
+                                        <th scope="col">Форма оплаты:</th>
+                                        <th scope="col">дата старта консигнации:</th>
+                                        <th scope="col">дата конеца консигнации:</th>
+
+                                       
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                    <%deal.forEach(i=>{%>
+
+                                   
+                                
+
+                         
+                                        <tr>
+                                     
+                                        <td><%=i.author.full_name%></td>
+                                        <td><%=i.postavkaDate%></td>
+                                        <td><%=i.fioOrder%></td>
+                                        <td><%=i.nameOrganization%></td>
+                                        <td><%=i.address%></td>
+                                        <td><%=i.good.titleDescription%></td>
+                                        <td><%=i.good.defaultQuantity%></td>
+                                        <td><%=i.quantity%></td>
+                                        <td><%=i.payForm%></td>
+                                        <td><%=i.consDateStart%></td>
+                                        <td><%=i.consDateEnd%></td>
+                                       
+                                        </tr>
+                                       
+                                  
+                        <%
+                            })%>
+
+                        </tbody>
+                        </table>
+
+                    <div >
+                        <%
+                  
+                       
+                  for (i in user) {
+                        // console.log('user._id= ',user._id)
+                        }
+                        posts.forEach(item=>{
+                            if (item.author._id==user.id){
+                                console.log('user._id= ',user._id ) 
+                                console.log('item= ',item.author._id)
+                                console.log('item after IF Statement= ',item)
+                                
+                                
+                %>
+
+
+                     
+
+                      
+
+
+                            
+
+                               
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    <% }
+                }) %>
+                </div>
+            </div>
+
+
+          
+        </div>
+    </body>
+</html></div></div></body></body></html>
+

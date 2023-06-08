@@ -1,0 +1,658 @@
+
+.component-1 {
+ /* display: flex;
+  flex-direction: column;
+  align-items: flex-start;*/
+   font-family: "Roboto",sans-serif;
+  background-color: #F5F5F5;
+}
+.flex-wrapper-one {
+  background-color: var(--white);
+  margin-bottom: 40px;
+/*  padding: 38px 100px 33px;*/
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  height: 130px;
+
+}
+.decode-blog {
+  /* width: 22.82%; */
+/*  font-family: "Roboto",sans-serif;*/
+  font-size: 50px;
+  font-weight: 500;
+  line-height: normal;
+ 
+  align-self: auto;
+  margin-right: 28px;
+  color: #00A2DC;
+}
+.group-28 {
+  /*background-color: var(--white);
+  margin-top: 2px;
+  border-radius: 4px 0px 0px 4px;
+  padding: 1.67px 169.11px 8px 20.27px;
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid var(--gainsboro);*/
+
+
+      margin-top: 0px;
+    border-radius: 4px 0px 0px 4px;
+    padding: 1.67px 169.11px 8px 20.27px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--gainsboro);
+    height: 50px;
+}
+.poisk-po-blogam {
+/*  font-family: "Roboto";*/
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--transparent-black);
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+
+}
+.search-icon{
+  padding: 12px;
+  color: white;
+
+}
+.group-29 {
+  background-color: var(--dark-turquoise);
+  margin-top: 2px;
+  margin-right: 101px;
+  border-radius: 0px 4px 4px 0px;
+  padding: 3px 9px 9px 10px;
+  display: flex;
+  align-items: flex-start;
+}
+.icons-search {
+  width: 27.78%;
+  height: 52.63%;
+  margin-top: 13px;
+  margin-right: 3px;
+}
+.najti {
+/*  width: 68.06%;*/
+/*  font-family: "Roboto";*/
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  background-color: #00A2DC;
+  align-self: flex-end;
+  display: flex;
+  color: white;
+  padding: 14px 5px 12px 0px;
+}
+
+.najtiButton{
+  align-items: center;
+    background-color: #00A2DC;
+    align-self: flex-end;
+    display: flex;
+    color: white;
+    height: 50px;
+    order: none;
+  }
+
+
+.group-27 {
+  background-color: var(--dark-turquoise);
+  margin-top: 2px;
+  margin-right: 20px;
+  border-radius: 4px;
+  padding: 2.14px 13px 9.53px;
+  display: flex;
+  align-items: flex-start;
+}
+.registracija {
+/*  font-family: "Roboto";*/
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--white);
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+}
+.group-26 {
+  background-color: var(--dark-turquoise);
+  margin-top: 2px;
+  border-radius: 4px;
+  padding: 4.14px 13px 7.53px;
+  display: flex;
+  align-items: flex-start;
+}
+.flex-wrapper-three {
+  /* padding: 0px 0 0 111px;
+  display: flex;
+  align-items: flex-start; */
+}
+
+
+.box-main {
+  display: flex;
+  align-items: stretch;
+  
+}
+
+.box {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.relative-wrapper-one {
+  position: relative;
+  background: #FFFFFF;
+
+
+}
+.relative-wrapper-one:not(:last-of-type) {
+  margin-right: 24px;
+}
+.card {
+  background-color: var(--white);
+  border-radius: 3px;
+  padding: 38.8px 68px 55.16px 63px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  position: relative;
+}
+.title {
+  margin-bottom: 67px;
+  margin-left: 25px;
+  padding: 0 0 0.01px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.blogi-po-programmirovaniju {
+  height: 39.66%;
+  width: 70.11%;
+/*  font-family: "Roboto";*/
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--black);
+  display: contents;
+  margin-bottom: 25.86px;
+}
+.populjarnye-i-luchshie-publikacii-po-progra {
+  height: 41.38%;
+/*  font-family: "Roboto";*/
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  align-self: stretch;
+  display: flex;
+  text-align: center;
+}
+.article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.article:not(:last-of-type) {
+  margin-bottom: 50.98px;
+}
+.image-1 {
+  width:20%;
+  height: 49.71%;
+  margin-bottom: 39.97px;
+  margin-left: 2px;
+}
+.obzor-report-manager-ot-webix {
+  height: 6.98%;
+  width: 53.48%;
+  font-family: "Roboto";
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  display: contents;
+  text-align: center;
+  margin-left: 2px;
+}
+.osen-2020-goda-stala-plodotvornym-vreme {
+  height: 31.4%;
+  width: 99.74%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  display: flex;
+  margin-bottom: 27.04px;
+  margin-left: 2px;
+}
+.flex-wrapper-four {
+  display: flex;
+  align-items: center;
+}
+.date {
+  margin-right: 70px;
+  padding: 0 93px 1.17px 0;
+  position: relative;
+}
+.icons-date {
+  width: 100%;
+  height: 100%;
+}
+.num-26-06-2020 {
+  height: 96.02%;
+  width: 69.23%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 1.18px;
+}
+.views {
+  margin-right: 392px;
+  display: flex;
+  align-items: center;
+}
+.icons-visibility {
+  width: 43.64%;
+  height: 99.51%;
+  margin-right: 9px;
+}
+.num-21 {
+  height: 98.73%;
+  width: 40%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  display: flex;
+}
+.author {
+  padding: 0 83px 1.17px 0;
+  position: relative;
+}
+.nast1289 {
+  height: 96.02%;
+  width: 65.42%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  display: flex;
+  position: absolute;
+  left: 37px;
+  top: 1.18px;
+}
+.category {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  right: 145px;
+  bottom: -0.01px;
+}
+.forums {
+  width: 24px;
+  height: 28.22px;
+  margin-right: 12px;
+}
+.veb-razrabotka {
+  width: 76.77%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  align-self: stretch;
+  display: flex;
+}
+.comments {
+  /* display: flex;
+  align-items: flex-start;
+  position: absolute;
+  left: 311px;
+  bottom: -0.01px; */
+}
+.message {
+  width: 24px;
+  height: 28.22px;
+  margin-right: 12.7px;
+}
+.num-4 {
+  width: 19.69%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  align-self: stretch;
+  display: flex;
+}
+.razrabotchiki-izobreli-metodologiju-vysoko {
+  height: 15.27%;
+  width: 94.48%;
+  font-family: "Roboto";
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  display: flex;
+  margin-bottom: 11.47px;
+  margin-left: 2px;
+}
+.osen-2020-goda-stala-plodotvornym-vreme-two {
+  height: 69.22%;
+  width: 99.74%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  display: flex;
+  margin-bottom: 16.04px;
+  margin-left: 2px;
+}
+.views-two {
+  margin-right: 392px;
+  display: flex;
+  align-items: flex-start;
+}
+.icons-visibility-two {
+  margin-right: 13px;
+  align-self: stretch;
+}
+.num-21-two {
+  width: 32.73%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
+  align-self: stretch;
+  display: flex;
+}
+.category-two {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  right: 145px;
+  top: 338.63px;
+}
+.forums-two {
+  margin-right: 12px;
+  padding: 2.08px 2px 2.63px;
+  display: flex;
+  align-items: center;
+}
+.fill-6 {
+  width: 20px;
+  height: 23.51px;
+}
+.comments-two {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  left: 311px;
+  top: 338.63px;
+}
+.image-2 {
+  width: 84.98%;
+  height: 15.77%;
+  position: absolute;
+  left: 63px;
+  bottom: 692px;
+}
+.cards-blank {
+  position: relative;
+}
+.kategorii {
+  width: 56.23%;
+  height: 7.6%;
+ 
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--black);
+  position: relative;
+  left: 30px;
+  top: 0px;
+}
+.prognozy-v-it {
+  width: 99.19%;
+  height: 7.6%;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--dodger-blue);
+  position: relative;
+  left: 30px;
+  top: 0px;
+}
+.line-2 {
+  width: 81.79%;
+  height: 0.17%;
+  background-color: var(--gainsboro);
+  position: absolute;
+  left: 30px;
+  top: 170px;
+}
+.veb-razrabotka-two {
+  width: 38.34%;
+  height: 7.6%;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--dodger-blue);
+  position: absolute;
+  left: 30px;
+  top: 170px;
+}
+.line-3 {
+  width: 81.79%;
+  height: 0.17%;
+  background-color: var(--gainsboro);
+  position: absolute;
+  left: 30px;
+  top: 216px;
+}
+.mobil-naja-razrabotka {
+  width: 56.55%;
+  height: 7.6%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--dodger-blue);
+  position: absolute;
+  left: 30px;
+  top: 216px;
+}
+.line-4 {
+  width: 81.79%;
+  height: 0.17%;
+  background-color: var(--gainsboro);
+  position: absolute;
+  left: 30px;
+  top: 262px;
+}
+.frilans {
+  width: 21.41%;
+  height: 7.6%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--dodger-blue);
+  position: absolute;
+  left: 30px;
+  top: 262px;
+}
+.line-5 {
+  width: 81.79%;
+  height: 0.17%;
+  background-color: var(--gainsboro);
+  position: absolute;
+  left: 30px;
+  top: 308px;
+}
+.algoritmy {
+  width: 27.8%;
+  height: 7.6%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--dodger-blue);
+  position: absolute;
+  left: 30px;
+  top: 308px;
+}
+.line-6 {
+  width: 81.79%;
+  height: 0.17%;
+  background-color: var(--gainsboro);
+  position: absolute;
+  left: 30px;
+  top: 354px;
+}
+.testirovanie-it-sistem {
+  width: 58.15%;
+  height: 7.6%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--dodger-blue);
+  position: absolute;
+  left: 30px;
+  top: 354px;
+}
+.line-7 {
+  width: 81.79%;
+  height: 0.17%;
+  background-color: var(--gainsboro);
+  position: absolute;
+  left: 30px;
+  top: 400px;
+}
+.razrabotka-igr {
+  width: 37.38%;
+  height: 7.6%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--dodger-blue);
+  position: absolute;
+  left: 30px;
+  top: 400px;
+}
+.line-8 {
+  width: 81.79%;
+  height: 0.17%;
+  background-color: var(--gainsboro);
+  position: absolute;
+  left: 30px;
+  top: 446px;
+}
+.dizajn-i-juzabiliti {
+  width: 50.16%;
+  height: 7.6%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--dodger-blue);
+  position: absolute;
+  left: 30px;
+  top: 446px;
+}
+.line-9 {
+  width: 81.79%;
+  height: 0.17%;
+  background-color: var(--gainsboro);
+  position: absolute;
+  left: 30px;
+  bottom: 112px;
+}
+.iskustvennyj-intelekt {
+  width: 58.79%;
+  height: 7.6%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--dodger-blue);
+  position: absolute;
+  left: 30px;
+  bottom: 67px;
+}
+.line-10 {
+  width: 81.79%;
+  height: 0.17%;
+  background-color: var(--gainsboro);
+  position: absolute;
+  left: 30px;
+  bottom: 66px;
+}
+.mashinnoe-obuchenie {
+  width: 49.52%;
+  height: 7.6%;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--dodger-blue);
+  position: absolute;
+  left: 30px;
+  bottom: 21px;
+}
+.line-11 {
+  width: 81.79%;
+  height: 0.17%;
+  background-color: var(--gainsboro);
+  position: absolute;
+  left: 30px;
+  bottom: 20px;
+}
+.line-1 {
+  width: 100%;
+  position: absolute;
+  right: -0.01px;
+  top: 130px;
+}
+
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

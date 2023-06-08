@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="/style.css"/>
+    </head>
+    <body>
+        <div class="component-1">
+            <div class="" style="background: #FFFFFF">
+                <div style="
+                                                           display: flex;
+                                                          margin-left: 5%;
+                                                          margin-right: 5%;
+                                                          align-items: center;">
+                    <p>
+                        <a href="/" style="text-decoration: none;" class="decode-blog">Decode Blog</a>
+                    </p>
+                    <div class="group-29"></div>
+                    <div class="group-29"></div>
+                    <form class="group-28">
+                        <input  name="search" placeholder="Поиск по блогам" class="poisk-po-blogam"></input>
+
+                    <button class="najtiButton" type="submit">
+                        <img src="/images/Vector.png" class="najti"/>
+
+                        Найти
+                    </button>
+                </form>
+
+
+                <%if (user._id){ %>
+                    <a href="/profile/<%=user._id%>" class="href">
+                        <div class="group-26">
+                            <img src="/images/avatar.png" alt="" width="73" height="73"></div>
+                    </a>
+                <%}else{%>
+                    <div class="group-27">
+
+                        <a class="najtiButton" href="/register" style="text-decoration: none;justify-content: center;width: 7rem;">
+                            Регистрация
+                        </a>
+
+                    </div>
+                    <div class="group-26">
+
+                        <a class="najtiButton" style="text-decoration: none;align-items: center;justify-content: center;width: 6rem;" style="text-decoration: none;" href="/signin">Вход</a>
+
+                    </div>
+                <%}%>
+            </div>
+        </div>
+
+    
+            <div class="card">
+
+                <div class="article">
+                    <img alt="" class="image-1" src="<%=post.image%>"/>
+
+                    <div class="box">
+                        <div class="box">
+                            <div style="width: 95%;">
+                                <%=post.title%>
+                            </div>
+
+                            <!-- <div style="width:5%">
+                                <a>
+                                    Подробнее
+                                    <img src="/images/dotted.png" alt="">
+                                    </img>
+                                </a>
+                        </div> -->
+                    </div>
+                </div>
+                <p class="obzor-report-manager-ot-webix">
+                    <%=post.titleDescription%><br/>
+                </p>
+                <p class="osen-2020-goda-stala-plodotvornym-vreme">
+
+                    <br/>
+                    <%=post.posttext%>
+                </p>
+
+
+                <div class="box">
+                    <div class="box">
+                        <div style="width: 20%;padding: 10px;">
+                            <img src="/images/calendar.png"/>
+                        </div>
+
+                        <div style="width:80%">
+                            <p class="">26.06.2020</p>
+                        </div>
+
+                    </div>
+
+                    <div class="box">
+                        <div style="width: 20%;padding: 10px;">
+                            <img src="/images/eye.png"/>
+                        </div>
+
+                        <div style="width:80%">
+                            <p class="">21</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="box">
+                        <div style="width: 20%;padding: 10px;">
+                            <img alt="" class="message" src="https://static.overlay-tech.com/assets/27ff86e9-732f-4068-87e7-3a5384fa319d.svg"/>
+                        </div>
+
+                        <div style="width:80%">
+                            <p class="">4</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="box">
+                        <div style="width: 20%;padding: 10px;">
+                            <img alt="" class="forums" src="https://static.overlay-tech.com/assets/32823ebb-3477-4992-9bf0-0b01dbc2b3eb.svg"/>
+                        </div>
+
+                        <div style="width:80%">
+                            <p class=""><%=post.category.name%></p>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div style="width: 20%;padding: 10px;">
+                            <img src="/images/user.png"/>
+                        </div>
+
+                        <div style="width:80%">
+                            <p class=""><%=post.author.full_name%></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+      
+            <div class="comments">
+                <div style="margin: 0 5%">
+                    
+                    <h3>Комментарии</h3>
+                    <% if(user && user._id){%>
+                    
+                    <form  class="add-comment-form" onSubmit="sendRate(event)">
+                        <p>Напишите комментарии</p>
+                        <textarea id="comment-text"></textarea>
+                        <input type="hidden" value="<%= user._id%>" id="comment_author">
+                        <input type="hidden" value="<%= post._id%>" id="comment_post">
+                        <button type="submit">Сохранить</button>
+                    </form>
+                    <% }else{ %>
+                        <p>
+                            <a href="/signIn">Войдите</a>
+                            или
+                            <a href="/register">Зарегистрируйтесь</a>,
+                            чтобы оставить комментарии
+                        </p>
+                    <% } %>
+
+                </div>
+             
+                <div style="margin: 0 5%">
+                
+                    <% 
+                        if(rate){   
+                            rate.forEach(rate =>{
+                            console.log('this is RATE= ',rate)
+                    %>
+                        <div class="comment">
+                            <p>Автор: 
+                                <a href=""><%=rate.authorId.full_name%></a>    
+                            </p>
+                        
+                            <% if(rate.text.length > 0){%>
+                            <p>Комментарии: <%= rate.text %></p>
+                            <% } %>
+                        </div>
+                    <%
+                            })
+                        }
+
+                    
+                    %>
+                </div>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="/js/rateFilm.js"></script>
+    </body>
+</html></div></body></html>
