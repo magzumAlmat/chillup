@@ -8,75 +8,81 @@
     </head>
     <body>
 
+        <div class="container">
+            <%- include('./partials/head'); %>
       
-        <%- include('./partials/head'); %>
-        <div class="component-1">
-            <div class="" style="background: #FFFFFF">
-                <div style="
-                                                                                                           display: flex;
-                                                                                                          margin-left: 5%;
-                                                                                                          margin-right: 5%;
-                                                                                                          align-items: center;">
-                    <p>
-                        <a href="/" style="text-decoration: none;" class="decode-blog">Chillup</a>
-                    </p>
-                    <div class="group-29"></div>
-                    <div class="group-29">
-                        <a class="najtiButton" href="/adddeal">Создать сделку</a>
-                   
-                        <a class="najtiButton" href="/api/signout/" style="text-decoration: none;justify-content: center;width: 7rem;">
-                            Signout
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Chillup</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                 
+                </ul>
+                <span class="navbar-text">
+                    <ul class="navbar-nav mr-auto">
+                    <%if (user._id){ %>
+                        <li class="nav-item">
+                            
+                            <a class='nav-link' href="/adddeal" >Создать сделку</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a href="/profile/<%=user._id%>" class="nav-link">
+                              <div style="display: flex ; align-items: center;"> 
+                                <h6><%=user.full_name%></h6>
+                                    <img src="/images/avatar.png" alt="" width="73" height="73">
+                                </div>
                         </a>
-                    </div>
-
-
-                  
-                <div class="group-29"></div>
-                <div class="group-29"></div>
-                <p><%=user.full_name%></p>
-                <%if (user._id){ 
-                        console.log('user._id=   ',user._id)%>
-                    <a href="/profile/<%=user._id%>" class="href">
-                        <div class="group-26">
-                            <img src="/images/avatar.png" alt="" width="73" height="73"></div>
-                    </a>
-                <%}else{%>
-                    <div class="group-27">
-
-                        <a class="najtiButton" href="/register" style="text-decoration: none;justify-content: center;width: 7rem;">
-                            Регистрация
+                        </li>
+                        <li class="nav-item">
+                        <a class='nav-link' href="/api/signout/" >
+                            Выход
                         </a>
+                        </li>
+                        
+                    <%}else{%>
+                      
+    
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register" style="">
+                                    Регистрация
+                                </a>
+                                </li>
 
-                    </div>
-                    <div class="group-26">
+                                <li class="nav-item">
+                                <a class="nav-link"style="t" style="text-decoration: none;" href="/signin">Вход</a>
+                            </li>
+                    
+                    <%}%>
+                    </ul>
+                </span>
+                </div>
+            </nav>
 
-                        <a class="najtiButton" style="text-decoration: none;align-items: center;justify-content: center;width: 6rem;" style="text-decoration: none;" href="/signin">Вход</a>
-
-                    </div>
-                <%}%>
 
 
-            </div>
-        </div>
+     
 
-        <div class="">
+            <div class="table-responsive">
             <div class="">
                 <div style="">
 
-                 <table class="table table-bordered">
+                 <table class="table table-sm">
                                     <thead>
                                         <tr>
-                                        <th scope="col">Имя продавца:</th>
-                                        <th scope="col">Дата поставки:</th>
-                                        <th scope="col">ФИО заказчика:</th>
-                                        <th scope="col">Наименование организации:</th>
-                                        <th scope="col">Aдрес:</th>
-                                        <th scope="col">Товар:</th>
-                                        <th scope="col">Количество на складе:</th>
-                                        <th scope="col">Заказаное количество:</th>
-                                        <th scope="col">Форма оплаты:</th>
-                                        <th scope="col">дата старта консигнации:</th>
-                                        <th scope="col">дата конеца консигнации:</th>
+                                        <th >Имя продавца:</th>
+                                        <th >Дата поставки:</th>
+                                        <th >ФИО заказчика:</th>
+                                        <th >Наименование организации:</th>
+                                        <th >Aдрес:</th>
+                                        <th >Товар:</th>
+                                        <th >Количество на складе:</th>
+                                        <th >Заказаное количество:</th>
+                                        <th >Форма оплаты:</th>
+                                        <th >дата старта консигнации:</th>
+                                        <th >дата конеца консигнации:</th>
 
                                        
                                         </tr>
@@ -154,5 +160,8 @@
           
         </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
 </html></div></div></body></body></html>
 

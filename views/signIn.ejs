@@ -7,82 +7,61 @@
         <link rel="stylesheet" type="text/css" href="/style.css"/>
     </head>
     <body>
+        <div class="container">
+        <%- include('./partials/head'); %>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Chillup</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+    <div class="container">
 
-        <div class="component-1">
-            <div class="" style="background: #FFFFFF">
-                <div style="
-                                     display: flex;
-                                    margin-left: 5%;
-                                    margin-right: 5%;
-                                    align-items: center;">
-                    <p class="decode-blog">Decode Blog</p>
-                    <div class="group-29"></div>
-                    <div class="group-29"></div>
-                    <div class="group-28">
-                        <input placeholder="Поиск по блогам" class="poisk-po-blogam"></input>
-
-                    <button class="najtiButton">
-                        <img src="/images/Vector.png" class="najti"/>
-
-                        Найти
-                    </button>
-                </div>
-
-
-                <div class="group-29"></div>
-                <div class="group-27">
-                    <p class="registracija">
-                        <button class="najtiButton">
-                            Регистрация
-                        </button>
-                    </p>
-                </div>
-                <div class="group-26">
-                    <button class="najtiButton">
-                        <p class="registracija " style="    align-items: center;">Вход</p>
-                    </button>
-                </div>
-               
-            </div>
-        </div>
-
-        <div class="flex-wrapper-three" style="padding: 0px 0 0 0px;">
-            <div class="box-main" style="width: 100%;">
-                <div style="width: 100%;  margin: 0px 1%; display: flex; justify-content: center;">
-                    <div>
-                       
-                            <h3 style="text-align: center;">Вход</h3>
-                            </div>
-                            <br>
-                            <form action="/api/signin/" method="POST" class="form">
-                            <div>
-
-                                <input type="text" placeholder="Введите почту" name="email" style="   background-color: #FFFFFF; height: 20px;
-                                                          width: 100%;"/>
-                                 <input type="text" placeholder="Введите пароль" name="password" style="   background-color: #FFFFFF; height: 20px;
-                                 width: 100%;"/>
-
-                            </div>
-                            
-                            <br>
-                            <button class="" type="submit" style="width: 105%;background-color: #00A2DC;color: white;">Войти</button>
-                            </form>
-                            
-                    </div>
-                    
-
-                </div>
         
+        <span class="navbar-text">
+            <ul class="navbar-nav mr-auto">
+           
+              
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register" style="">
+                            Регистрация
+                        </a>
+                        </li>
 
-            </div>
-            <div style="display: flex; justify-content: center;">
-                <a  href="/api/auth/github">Github</a>
-            </div>
-       
-
-
+                        <li class="nav-item">
+                        <a class="nav-link"style="t" style="text-decoration: none;" href="/signin">Вход</a>
+                    </li>
+            
+          
+            </ul>
+        </span>
         </div>
+        </nav>
+        <form action="/api/signin/" method="POST" class="form">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="text" placeholder="Введите почту" name="email"  class="form-control"/>
+                                 
+              
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+            
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password" />
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Вход</button>
+          </form>
+
+    </div>
+
+</div>
+       
     </body>
 </html></div><!-- <img alt="" class="line-1" src="https://static.overlay-tech.com/assets/217a8777-d638-4edd-9084-0293a36069e0.png"/> --></div></body></body></html>
 
