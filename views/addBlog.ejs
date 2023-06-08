@@ -7,116 +7,123 @@
         <link rel="stylesheet" type="text/css" href="/style.css"/>
     </head>
     <body>
+        <%- include('./partials/head'); %>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Chillup</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto"></ul>
+                    <span class="navbar-text">
+                        <ul class="navbar-nav mr-auto">
 
-        <div class="component-1">
-          <div class=""
-          style="background: #FFFFFF">
-          <div style="   
-           display: flex;
-          margin-left: 5%;
-          margin-right: 5%;
-          align-items: center;">
-                <p class="decode-blog" >Decode Blog</p>
-                <div class="group-29"></div>
-                <div class="group-29"></div>
-                <div class="group-28">
-                    <input placeholder="Поиск по блогам" class="poisk-po-blogam"></input>
-
-                    <button class="najtiButton">
-                        <img src="images/Vector.png" class="najti"/>
-
-                        Найти
-                    </button>
-                </div>
-           
-           
-            <div class="group-29"></div>
-            <div class="group-29"></div>
-           
-            <div class="group-26">
-                <img src="images/avatar.png"  alt="" width="73" height="73">
-            </div>
-        </div>
-      </div>
-
-        <div class="flex-wrapper-three">
-            <div class="box-main" style="width: 100%;">
-                <div style="width: 80%;background: #FFFFFF;
-                              margin: 0px 1%;">
-                    <div class="card">
-                        <form action="/api/addpost/"  method='POST' class="form"  enctype="multipart/form-data">
-                    
-                        <div style="width: 692px">
-                            <input type="text"  placeholder="Введите заголовок блога" style="   background-color: #FFFFFF; height: 80px;
-                            width: 100%;" name="title"/>
-                           
-                       
-
-                        <br>
-                        <br>
-                        <label for="">Выберите категорию поста</label>
-                            <select name="category" id="" >
-                                <% category.forEach(cat => {%>
-                                    <option value="<%=cat._id%>"><%=cat.name%></option>
+                            <%if (user._id){ %>
+                                <li class="nav-tem">
+                                    <a class="" href="/admin/<%=user._id%>">Админ панель</a>
+                                </li>
+                                <li class="nav-tem">
+                                    <a class="" href="/addBlog">Добавить товар</a>
+                                </li>
+                                <li class="nav-tem">
+                                <a href="/alldeals/" class="nav-link">
+                                    Все сделки
+                                </a>
+                                </li>
+                                <li class="nav-item">
                                     
+                                        <div style="display: flex ; align-items: center;">
+                                            <h6><%=user.full_name%></h6>
+                                            <img src="/images/avatar.png" alt="" width="73" height="73">
+                                        </div>
+                                    
+                                </li>
+                                <li class="nav-item">
+                                    <a class='nav-link' href="/api/signout/">
+                                        Выход
+                                    </a>
+                                </li>
+                            <%}else{%>
 
-                                    <%
-                                }) %>
-                                
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register" style="">
+                                        Регистрация
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" style="" style="text-decoration: none;" href="/signin">Вход</a>
+                                </li>
+
+                            <%}%>
+                        </ul>
+                    </span>
+                </div>
+            </nav>
+
+
+
+            <form action="/api/addpost/"  method='POST' class="form"  enctype="multipart/form-data">
+                    
+                <div style="width: 692px">
+                    <input type="text"  placeholder="Введите заголовок блога" style="   background-color: #FFFFFF; height: 80px;
+                    width: 100%;" name="title"/>
+                   
+               
+
+                <br>
+                <br>
+                <label for="">Выберите категорию поста</label>
+                    <select name="category" id="" >
+                        <% category.forEach(cat => {%>
+                            <option value="<%=cat._id%>"><%=cat.name%></option>
                             
-                            </select>
 
-          
-                        </div>
+                            <%
+                        }) %>
+                        
+                    
+                    </select>
 
-
-                        <br>
-                        <div>
-                            <label for="">Выберите картинку для поста</label>
-                            <input type="file"  name="image">
-                            <!-- <button style="background-color: #FFF72F; color: black ;width: 178px; height: 50px;" name="image">Выберите картинку</button> -->
-                        </div>
-                        <br>
-                        <div style="width: 692px">
-                            <input type="text"  placeholder="Введите описание блога" style="   background-color: #FFFFFF; height: 180px;
-                            width: 100%;" name="titleDescription"/>
-                           
-                        </div>
-                        <div style="width: 692px">
-                            <input type="text"  placeholder="Введите основной текст" style="   background-color: #FFFFFF; height: 180px;
-                            width: 100%;" name="posttext"/>
-                           
-                        </div>
-
-                        <div style="width: 392px">
-                            <input type="number" placeholder="Введите количество на складе" style="   background-color: #FFFFFF; height: 180px;
-                                                            width: 100%;" name="quantity"/>
-
-                        </div>
-                        <br>
-                        <div>
-                            <button class="najtiButton" type="submit">Создать</button>
-                        </div>
-                        </form>
-                    </div>
-
+  
                 </div>
 
 
-                <div style="width: 20%;background: #FFFFFF;margin-right: 10px;">
-                    <div
-                        class="cards-blank">
-                        <!-- Include here the component "CardsBlank" -->
+                <br>
+                <div>
+                    <label for="">Выберите картинку для поста</label>
+                    <input type="file"  name="image">
+                    <!-- <button style="background-color: #FFF72F; color: black ;width: 178px; height: 50px;" name="image">Выберите картинку</button> -->
+                </div>
+                <br>
+                <div style="width: 692px">
+                    <input type="text"  placeholder="Введите описание блога" style="   background-color: #FFFFFF; height: 180px;
+                    width: 100%;" name="titleDescription"/>
                    
-                        <p class="kategorii">Категории</p>
-                        <% category.forEach(cat => {%>
-                          <a  class="prognozy-v-it" href="/<%=cat.key%>"><%=cat.name%></a>
-                           <%
-                       }) %>
-                    </div>
-  
-                  </div>
-                
+                </div>
+                <div style="width: 692px">
+                    <input type="text"  placeholder="Введите основной текст" style="   background-color: #FFFFFF; height: 180px;
+                    width: 100%;" name="posttext"/>
+                   
+                </div>
+
+                <div style="width: 392px">
+                    <input type="number" placeholder="Введите количество на складе" style="   background-color: #FFFFFF; height: 180px;
+                                                    width: 100%;" name="quantity"/>
+
+                </div>
+                <br>
+                <div>
+                    <button class="najtiButton" type="submit">Создать</button>
+                </div>
+                </form>
+
+
+
+            </div>
+      
        
             </div>
         </div>

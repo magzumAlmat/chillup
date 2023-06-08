@@ -122,6 +122,18 @@ router.get('/createdeal/:id',async (req,res) =>{
     res.render("createDeal",{posts,category:AllCategories,user:req.user?req.user:{}})
 })
 
+router.get('/alldeals',async (req,res) =>{
+    console.log('this is req.body from  create dial= ',req.body)
+    const AllCategories=await categories.find()
+    const user = await User.findById(req.params.id)
+   
+    const deal= await Deal.find().populate('author').populate('good')
+    
+    const posts= await Post.findById(req.params.id).populate('category').populate('author')
+    res.render("allDeals",{deal,posts,category:AllCategories,user:req.user?req.user:{}})
+})
+
+
 
 router.get('/editpost/:id',async(req,res) =>{
     const AllCategories=await categories.find()

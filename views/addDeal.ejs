@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="/style.css"/>
     </head>
     <body>
-        
+
         <%- include('./partials/head'); %>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -75,6 +75,7 @@
 
                                     <div class="row">
                                         <% posts.forEach(cat => {
+                                             if(cat.defaultQuantity!=0){
                                     // console.log('cat=', cat)
                                     %>
 
@@ -93,7 +94,7 @@
 
 
                                     <%
-                                }) %>
+                              }  }) %>
 
                                 </div>
 
