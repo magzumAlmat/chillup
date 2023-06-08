@@ -8,28 +8,47 @@ const fs=require('fs')
 const path=require('path')
 
 
+
+// const editPost=async(req,res)=>{
+//     console.log('IM in edit post in Deal controller= ')
+//     if (
+        
+//         req.body.nameOrganization.length>2 && 
+//         req.body.fioOrder.length>2 && 
+//         req.body.address.length>0 )
+//     {
+            
+//             const posts= await Post.findById(req.body.good)
+//             let defQuan=Number(posts.defaultQuantity)
+//             console.log('defQuan= ' ,typeof(defQuan),defQuan)
+//             console.log('req body quantity= ' ,typeof(req.body.quantity),req.body.quantity)
+            
+//             posts.defaultQuantity=defQuan-Number(req.body.quantity),
+//             posts.updateOne()
+//             res.redirect(`/profile/${req.user._id}`)
+    
+           
+//     }
+
+//     else{
+//         res.redirect(`/profile${req.body.id}?error=1`)
+
+//     }
+
+// }
+
+
+
 const createDeal=async(req,res) => {
     console.log('createDeal started!')
-
-    
     const posts= await Post.findById(req.body._id)
-    console.log('DQ=  ',posts)
-    // console.log('req.file = ',req.file)
-    // console.log('req.body ',req.body.category,typeof(req.body.category))
-
-    // console.log('req.body=== ',req.body.time)
-    // console.log('req.body=== ',req.body.good)
-
-    // console.log('req user_id',req.user._id)
-    
     if (
-        // req.file.length > 2 &&
+       
         req.body.nameOrganization.length>2 && 
         req.body.fioOrder.length>2 && 
         req.body.address.length>0 )
     {
-        // console.log(' if idet po vetke true ', req.file)
-     
+
         await new Deal({
             nameOrganization:req.body.nameOrganization,
             fioOrder:req.body.fioOrder,
@@ -39,33 +58,36 @@ const createDeal=async(req,res) => {
             consDateStart:req.body.consDateStart,
             consDateEnd :req.body.consDateEnd,
             good:req.body.good,
-
             quantity:req.body.quantity,
             address:req.body.address,
-            good:req.body.good,
             title:req.body.title,
             category:req.body.category,
             titleDescription:req.body.titleDescription,
             posttext:req.body.posttext,
-            // image:`/images/posts/${req.file.filename}`,
             author:req.user._id,
-            defaultQuantity:req.body.quantity,
-            // image:`${req.file.destination}/${req.file.filename}`,
-        }).save(),
+        }).save()
 
-
-       
-        
-
+            const posts= await Post.findById(req.body.good)
+            let defQuan=Number(posts.defaultQuantity)
+            console.log('defQuan= ' ,typeof(defQuan),defQuan)
+            console.log('req body quantity= ' ,typeof(req.body.quantity),req.body.quantity)
+    
+            posts.updateOne(
+                { $set:
+                    {
+                      defaultQuantity:defQuan-Number(req.body.quantity)
+                     
+                    }
+                 }
+            ).exec()
 
         res.redirect(`/profile/${req.user._id}`)
     }else
     {
         res.redirect('/new&error=1')
     }
-    console.log('req.body.film = ',req.body)
+  
 }
-
 
 // const editPost=async(req,res)=>{
 //     // console.log('IM in edit film req body= ',req.body)
