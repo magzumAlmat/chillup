@@ -83,6 +83,7 @@
                                         <th >Форма оплаты:</th>
                                         <th >дата старта консигнации:</th>
                                         <th >дата конеца консигнации:</th>
+                                        <th >cтатус:</th>
 
                                        
                                         </tr>
@@ -90,6 +91,7 @@
                                     <tbody>
 
                     <%deal.forEach(i=>{
+                        console.log('ID= ',i._id)
                         // console.log('i.author._id= ',i)
                         // console.log('user._id= ',user.full_name)
                         if(String(i.author._id)===String(user._id)){
@@ -109,6 +111,33 @@
                                         <td><%=i.payForm%></td>
                                         <td><%=i.consDateStart%></td>
                                         <td><%=i.consDateEnd%></td>
+                                       
+                                        <form action="/api/editstatus/"  method='POST' class="form"  >
+                                            <td><b><%=i.status%></b></td>
+                                            <input type="hidden" value="<%=i._id%>" name="id">
+                                            <td>
+                                             
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="inProgress" checked onchange="this.form.submit();">
+                                                    <label class="form-check-label" for="exampleRadios1">
+                                                    В работе
+                                                    </label>
+                                                </div>
+
+
+
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="finished" onchange="this.form.submit();">
+                                                    <label class="form-check-label" for="exampleRadios1">
+                                                    Завершено
+                                                    </label>
+                                                </div>
+
+
+                            
+                                            </td>
+                                        </form>
+
                                        
                                         </tr>
                                        

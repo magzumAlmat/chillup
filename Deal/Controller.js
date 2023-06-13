@@ -65,6 +65,7 @@ const createDeal=async(req,res) => {
             titleDescription:req.body.titleDescription,
             posttext:req.body.posttext,
             author:req.user._id,
+            status:'inProgress'
         }).save()
 
             const posts= await Post.findById(req.body.good)

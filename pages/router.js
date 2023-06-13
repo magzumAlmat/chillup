@@ -143,6 +143,15 @@ router.get('/editpost/:id',async(req,res) =>{
 })
 
 
+router.get('/editstatus/:id',async(req,res) =>{
+    const AllCategories=await categories.find()
+    const user = await User.findById(req.params.id)
+    const post= await Post.findById(req.params.id)
+    res.render("profile",{posts:post,category:AllCategories,user:req.user?req.user:{}})
+})
+
+
+
 router.get('/more/:id',async(req,res) =>{
     console.log('req.params.id= ',req.params.id)
     const AllCategories=await categories.find()

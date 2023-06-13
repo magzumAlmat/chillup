@@ -4,7 +4,7 @@ const { ObjectId } = mongoose.Types;
 
 const fs=require('fs')
 const path=require('path')
-
+const deals=require('../Deal/Deal')
 const createPost=async(req,res) => {
 
 
@@ -49,8 +49,9 @@ const createPost=async(req,res) => {
 
 const editPost=async(req,res)=>{
     // console.log('IM in edit film req body= ',req.body)
+   
     if (
-        // req.file.length > 2 &&
+       
         req.body.title.length>2 
         // req.body.category.length>2 && 
         // req.body.titleDescription.length>0 && 
@@ -60,7 +61,8 @@ const editPost=async(req,res)=>{
             // console.log('req.file = ',req.file)
             // console.log('req.user._id= ',req.user._id)
             // console.log('req.body=== ',req.body)
-       
+           
+            
 
             const posts= await Post.findById(req.body.id)
             if (req.file.filename){
@@ -91,6 +93,61 @@ const editPost=async(req,res)=>{
 }
 
 
+
+const editStatus=async(req,res)=>{  
+    console.log('6487f6b1e041a6907e71256e  req.body.id=',req.body.id)
+    const Deals= await deals.findById(req.body.id)
+  
+    if (req.body.status.length>2)
+        {
+
+            Deals.updateOne(
+                { $set:
+                    {
+                      status:req.body.status
+                     
+                    }
+                 }
+            ).exec()
+            res.redirect(`/profile/${req.user._id}`)
+    
+           
+        }
+
+    else{
+        res.redirect(`/profile/${req.body.id}?error=1`)
+
+    }
+}
+
+
+
+const editStatusByAdmin=async(req,res)=>{  
+    console.log('6487f6b1e041a6907e71256e  req.body.id=',req.body.id)
+    const Deals= await deals.findById(req.body.id)
+  
+    if (req.body.status.length>2)
+        {
+
+            Deals.updateOne(
+                { $set:
+                    {
+                      status:req.body.status
+                     
+                    }
+                 }
+            ).exec()
+            res.redirect(`/alldeals/`)
+    
+           
+        }
+
+    else{
+        res.redirect(`/alldeals/${req.body.id}?error=1`)
+
+    }
+}
+
 const deletePost=async(req,res)=>{
     console.log('DELETE FILM11111')
     const { id } = req.body;
@@ -109,4 +166,4 @@ const showMore=async(req,res)=>{
 }
 
 
-module.exports={createPost,editPost,deletePost,showMore}
+module.exports={createPost,editPost,deletePost,showMore,editStatus,editStatusByAdmin}

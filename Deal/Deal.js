@@ -19,7 +19,8 @@ const DealSchema=new mongoose.Schema({
     fioOrder:String,
     payForm:String,
     consDateStart:{type:Date},
-    consDateEnd:{type:Date}
+    consDateEnd:{type:Date},
+    status:String,
 })
 
 module.exports = mongoose.model('deals',DealSchema)
