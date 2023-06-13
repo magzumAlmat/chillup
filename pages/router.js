@@ -7,8 +7,20 @@ const Post=require('../Posts/Post')
 const Rate=require('../Rates/Rates')
 // const Goods = require('../Goods/Goods')
 const Deal=require('../Deal/Deal')
+const fs=require('fs')
+const keyjson=require('../googleSheets/client_secret_301660699750-bs7edp1f9jnj4eg2derf6jees3qj6bk8.apps.googleusercontent.com.json')
+
+
+const { google } = require('googleapis');
+
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+
+
 
 router.get('/',async(req,res) =>{
+
+
+    
     const AllCategories=await categories.find()
     // console.log('cat= ',AllCategories)
     const Categories= await categories.findOne({key:req.query.Categories})
@@ -78,6 +90,58 @@ router.get('/',async(req,res) =>{
 
 
 
+
+router.get('/sync',async (req,res) =>{
+    console.log('я внутри SyCC')
+    const AllCategories=await categories.find()
+    const user = await User.findById(req.params.id)
+    const { GoogleSpreadsheet } = require('google-spreadsheet');
+
+    // File handling package
+  
+
+    // spreadsheet key is the long id in the sheets URL
+    const RESPONSES_SHEET_ID = '1jXpRUOXzxjHw3v2JsrixomrR8Ha3YLf6xsypHeY-dMA';
+
+    // Create a new document
+    const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
+
+    // Credentials for the service account
+    const CREDENTIALS = JSON.parse(fs.readFileSync('/Users/billionare/Documents/ChillUp/pages/client_secret_301660699750-bs7edp1f9jnj4eg2derf6jees3qj6bk8.apps.googleusercontent.com.json'));
+
+    const getRow = async (email) => {
+
+        // use service account creds
+        await doc.useServiceAccountAuth({
+            client_email: CREDENTIALS.client_email,
+            private_key: CREDENTIALS.private_key
+        });
+    
+        // load the documents info
+        await doc.loadInfo();
+    
+        // Index of the sheet
+        let sheet = doc.sheetsByIndex[0];
+        
+        // Get all the rows
+        let rows = await sheet.getRows();
+      
+        for (let index = 0; index < rows.length; index++) {
+            const row = rows[index];
+            
+                console.log(row._id,row.title,row.category,row.titleDescription,row.image,row.author,row.posttext,row.defaultQuantity,row.date)
+            
+        };
+    };
+
+    getRow('myserviceacc@chilup.iam.gserviceaccount.com');
+
+
+    res.render("sync",{category:AllCategories,user:req.user?req.user:{}})
+})
+
+
+
 router.get('/addBlog',async (req,res) =>{
     const AllCategories=await categories.find()
     const user = await User.findById(req.params.id)
@@ -128,7 +192,7 @@ router.get('/alldeals',async (req,res) =>{
     const user = await User.findById(req.params.id)
    
     const deal= await Deal.find().populate('author').populate('good')
-    
+    console.log('deal in alldeals',deal)
     const posts= await Post.findById(req.params.id).populate('category').populate('author')
     res.render("allDeals",{deal,posts,category:AllCategories,user:req.user?req.user:{}})
 })

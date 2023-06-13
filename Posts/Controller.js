@@ -1,29 +1,21 @@
 const Post=require('./Post')
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Types;    
-
+const axios = require('axios');
 const fs=require('fs')
 const path=require('path')
 const deals=require('../Deal/Deal')
+
+
 const createPost=async(req,res) => {
 
 
-    // console.log('req.file = ',req.file)
-    // console.log('req.body ',req.body.category,typeof(req.body.category))
-    // console.log('req.body=== ',req.body)
-    // console.log('req.body=== ',req.body.titleRus)
-    // console.log('req.body=== ',req.body.titleEng)
-    // console.log('req.body=== ',req.body.year)
-    // console.log('req.body=== ',req.body.time)
-    // console.log('req.body=== ',req.body.country)
-    // console.log('req.body=== ',req.body.ganre)
-    // console.log('req user_id',req.user._id)
     
     if (
         // req.file.length > 2 &&
         req.body.title.length>2 && 
         req.body.category.length>2 && 
-        req.body.titleDescription.length>0 && 
+        req.body.titleDescription.length>2 && 
         req.body.posttext.length>0 )
     {
         // console.log(' if idet po vetke true ', req.file)
@@ -44,6 +36,31 @@ const createPost=async(req,res) => {
         res.redirect('/new&error=1')
     }
     console.log('req.body.film = ',req.body)
+
+
+    // telegram message send
+
+    let apiToken = "6046514684:AAFgwmQoGafcfm0MyX9GDiFmPTqU3x-rC0o";
+    // let chatId = "-1001979459403t";
+    let chatId = "@chillupbotadmin"
+    let text = "Hello world!";
+   
+    axios.post(`https://api.telegram.org/bot${apiToken}/sendMessage`, {
+        chat_id: chatId,
+        text: message
+      })
+        .then(response => {
+          console.log('Message sent successfully');
+        })
+        .catch(error => {
+          console.error('Error sending message:', error);
+        });
+
+
+    console.log('Message to telegram send')
+
+
+
 }
 
 
@@ -164,6 +181,8 @@ const showMore=async(req,res)=>{
     console.log('im in showMore Func- ',req._id)
     res.redirect(`/more/${req.user._id}`)
 }
+
+
 
 
 module.exports={createPost,editPost,deletePost,showMore,editStatus,editStatusByAdmin}
