@@ -43,6 +43,7 @@ app.use(require('./Posts/router'))
 
 app.use(require('./Rates/router'))
 app.use(require('./Deal/router'))
+app.use(require('./Client/router'))
 
 
 const PORT=4000

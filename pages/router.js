@@ -7,6 +7,8 @@ const Post=require('../Posts/Post')
 const Rate=require('../Rates/Rates')
 // const Goods = require('../Goods/Goods')
 const Deal=require('../Deal/Deal')
+
+const Client=require('../Client/Client')
 const fs=require('fs')
 const keyjson=require('../googleSheets/client_secret_301660699750-bs7edp1f9jnj4eg2derf6jees3qj6bk8.apps.googleusercontent.com.json')
 
@@ -160,6 +162,7 @@ router.get('/admin/:id', async (req,res) =>{
 })
 
 
+
 router.get('/addpost',async(req,res) =>{
     const AllCategories=await categories.find()
     const user = await User.findById(req.params.id)
@@ -167,24 +170,178 @@ router.get('/addpost',async(req,res) =>{
     res.render("addBlog",{posts:post,category:AllCategories,user:req.user?req.user:{}})
 })
 
+//-------------------------------------------------------------------------
+router.get('/syncclient',async (req,res) =>{
+    console.log('я внутри Sync CLIENT')
+
+    const AllCategories=await categories.find()
+    const user = await User.findById(req.params.id)
+    const { GoogleSpreadsheet } = require('google-spreadsheet');
+
+    // File handling package
+  
+
+    // spreadsheet key is the long id in the sheets URL
+    const RESPONSES_SHEET_ID = '17aGhMYSYPV6zff6mx4Ay6YOUFnRoTyMjhX7o9GeR9w8';
+
+    // Create a new document
+    const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
+
+    // Credentials for the service account
+    const CREDENTIALS = JSON.parse(fs.readFileSync('/Users/billionare/Documents/ChillUp/pages/client_secret_301660699750-bs7edp1f9jnj4eg2derf6jees3qj6bk8.apps.googleusercontent.com.json'));
+
+    const getRow = async (email) => {
+
+        // use service account creds
+        await doc.useServiceAccountAuth({
+            client_email: CREDENTIALS.client_email,
+            private_key: CREDENTIALS.private_key
+        });
+    
+        // load the documents info
+        await doc.loadInfo();
+    
+        // Index of the sheet
+        let sheet = doc.sheetsByIndex[0];
+        
+        // Get all the rows
+        let rows = await sheet.getRows();
+      
+        for (let index = 0; index < rows.length; index++) {
+            const row = rows[index];
+                console.log(row.shopName,row.nameOrganization,row.shopAddress,row.phone,row.author,row.date)
+        
+        
+                const deleteAllData = async () => {
+                    try {
+                      await Post.deleteMany();
+                      console.log('All Data successfully deleted');
+                    //   alert('Таблица Товаров удалена!')
+                    } catch (err) {
+                      console.log(err);
+                    }
+                  };
+        
+               
+                // console.log('this is after delete func',post,'post len ',post.length)
+                
+        
+                const client= await Client.find().populate('author')
+        
+               
+                   const data={
+                      
+                       shopName:row.shopName,
+                       nameOrganization:row.nameOrganization,
+                       shopAddress:row.shopAddress,
+                       phone:row.phone,
+                       author:row.author,
+                       date:row.date
+                   }
+                  
+
+
+                   
+                   Client.updateMany(
+                    { nameOrganization:data.nameOrganization },              // The query to find existing records
+                    { $set: { 
+                        shopName:data.shopName,
+                        nameOrganization:data.nameOrganization,
+                        shopAddress:data.shopAddress,
+                        phone:data.phone,
+                        manager:data.author,
+                        date:data.date } },    // The update operation to set the fields
+                    { upsert: true }                   // The option to perform an upsert
+                  ).exec();
+                  
+                   
+
+             
+                    // if(client.length!=0){
+
+                    //     console.log('Данные найдены обновляю')
+                    //     Client.updateOne(
+                    //         { $set:
+                    //             {
+                    //                 number:data.number,
+                    //                 code:data.code,
+                    //                 name:data.name,
+                    //                 count:data.count,
+                    //                 unit:data.unit,
+                    //                 price:data.price
+                    //             }
+                    //          }
+                    //     ).exec()
+                  
+                    
+                }
+                console.log('Record to Clients added')
+
+    };
+
+    getRow('myserviceacc@chilup.iam.gserviceaccount.com').then(  res.redirect(`/admin/${req.user._id}`));;
+
+
+    res.render("syncclient",{category:AllCategories,user:req.user?req.user:{}})
+})
+
+router.get('/createclient',async(req,res) =>{
+    
+
+
+
+    const AllCategories=await categories.find()
+    const user = await User.findById(req.params.id)
+    const post= await Post.find().populate('category').populate('author')
+    res.render("createClient",{posts:post,category:AllCategories,user:req.user?req.user:{}})
+})
+//-------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------------------
+
+
+// router.get('/chooseclient',async (req,res) =>{
+//     const AllCategories=await categories.find()
+//     const user = await User.findById(req.params.id)
+//     const client= await Client.find()
+//     const posts= await Post.find().populate('category').populate('author')
+//     res.render("createDeal",{client,posts,category:AllCategories,user:req.user?req.user:{}})
+// })
+
 
 router.get('/adddeal',async (req,res) =>{
     const AllCategories=await categories.find()
     const user = await User.findById(req.params.id)
    
     const posts= await Post.find().populate('category').populate('author')
-    res.render("addDeal",{posts,category:AllCategories,user:req.user?req.user:{}})
+    res.render("createDealStep1",{posts,category:AllCategories,user:req.user?req.user:{}})
 })
 
 
-router.get('/createdeal/:id',async (req,res) =>{
-    console.log('this is req.body from  create dial= ',req.body)
+router.get('/createdeal/:id/',async (req,res) =>{
+    console.log('this is req.body from  create dial= ',req.params)
+
     const AllCategories=await categories.find()
     const user = await User.findById(req.params.id)
-   
+    const client= await Client.find()
     const posts= await Post.findById(req.params.id).populate('category').populate('author')
-    res.render("createDeal",{posts,category:AllCategories,user:req.user?req.user:{}})
+    res.render("createDealStep2",{client,posts,category:AllCategories,user:req.user?req.user:{}})
 })
+
+
+router.get('/finishdeal/:client/:good/',async (req,res) =>{
+    console.log('this is req.body from  finish dial= ',req.params)
+
+    const AllCategories=await categories.find()
+    const user = await User.findById(req.params.id)
+    const client= await Client.findById(req.params.client)
+    const posts= await Post.findById(req.params.good).populate('category').populate('author')
+    res.render("createDealStep3",{client,posts,category:AllCategories,user:req.user?req.user:{}})
+})
+
+
+
 
 router.get('/alldeals',async (req,res) =>{
     console.log('this is req.body from  create dial= ',req.body)
@@ -197,7 +354,7 @@ router.get('/alldeals',async (req,res) =>{
     res.render("allDeals",{deal,posts,category:AllCategories,user:req.user?req.user:{}})
 })
 
-
+//-----------------------------------------------------------------------------------------------------
 
 router.get('/editpost/:id',async(req,res) =>{
     const AllCategories=await categories.find()
@@ -261,7 +418,7 @@ router.get('/profile/:id',async(req,res) =>{
     console.log('req params= ',req.params)
     const output=''
     const post= await Post.find().populate('category').populate('author')
-    const deal= await Deal.find().populate('author').populate('good')
+    const deal= await Deal.find().populate('author').populate('good').populate('client')
     
     
     // if (deal.author.id==req.params.id){

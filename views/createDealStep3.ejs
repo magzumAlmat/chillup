@@ -7,9 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
         <link rel="stylesheet" type="text/css" href="/style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
     <body>
-        <%- include('./partials/head'); %>
+  
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">Chillup</a>
@@ -63,44 +64,22 @@
       
 
             <div class="container">
-                <form action="/api/createdeal/" method='POST' class="form" >
+                <form action="/api/finishdeal/" method='POST' class="form" >
 
                     <br>
 
 
-                    <br>
-                    <!-- address:String,
-                                                title:String,
-                                                good:{type:Schema.Types.ObjectId,ref:  "post"},
-                                                key:Number,
-                                                titleDescription:String,
-                                                image:String,
-                                                author:{type:Schema.Types.ObjectId,ref: "Users"},
-                                               
-                                                quantity:Number,
-                                                date:{default:Date.now,type:Date}
+                    <h6><%=client%></h6>
+                    <h6><%=posts%></h6>
+                    <input type="hidden" name="client" value="<%=client._id %>"/>
+                    <input type="hidden" name="good" value="<%=posts._id %>"/>
                     
-                    
-                                                [15:44, 07.06.2023] Олжас Иманбаев: 1. Наименование ИП или ТОО 2
-                                                [15:45, 07.06.2023] Олжас Иманбаев: 2. ФИО кто подает заказ
-                                                [15:45, 07.06.2023] Олжас Иманбаев: 3 Адрес
-                                                [15:45, 07.06.2023] Олжас Иманбаев: 4 Ассортимент товара
-                                                [15:46, 07.06.2023] Олжас Иманбаев: 5 Дата Поставки
-                                                [15:47, 07.06.2023] Олжас Иманбаев: 6. Форма оптаты (наличка, каспи, конс)
-                                                [15:47, 07.06.2023] Олжас Иманбаев: Если конс, то период конса (с 01.01.01 по 02.01.01) -->
 
-                
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1"></label>
-                        <input class="form-control" type="text" placeholder="Введите Наименование ИП или ТОО" name="nameOrganization"/>
-                        <input class="form-control" type="text" placeholder="ФИО кто подает заказ" name="fioOrder">
-                        <input class="form-control" type="text" placeholder="Введите Адрес магазина" name="address">
-                     
-                        <input type="hidden" name="good" value="<%=posts._id %>" />
-                          
+    
+
                        
-
-
+                       
+                        <br>
                         <label for="start">Выберите Дату поставки:</label>
 
                         <input type="date" id="start" name="postavkaDate" value="" min="" max="" >
@@ -161,7 +140,7 @@
             <!-- <img alt="" class="line-1" src="https://static.overlay-tech.com/assets/217a8777-d638-4edd-9084-0293a36069e0.png"/> -->
        
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script></body></html></div></div></div></div></body></html></div> </body></html></div></div></body></body></html>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script></body></html></div></div></div></div></body></html></div> </body></html></div></div></body></body></html>
 
 
     </body>

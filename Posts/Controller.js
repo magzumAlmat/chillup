@@ -9,7 +9,7 @@ const deals=require('../Deal/Deal')
 
 const createPost=async(req,res) => {
 
-
+    console.log('createPost started!123',req.file)
     
     if (
         // req.file.length > 2 &&
@@ -47,7 +47,7 @@ const createPost=async(req,res) => {
    
     axios.post(`https://api.telegram.org/bot${apiToken}/sendMessage`, {
         chat_id: chatId,
-        text: message
+        text: "hiiiii from chillup app"
       })
         .then(response => {
           console.log('Message sent successfully');

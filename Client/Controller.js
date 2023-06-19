@@ -1,5 +1,5 @@
 const Post=require('../Posts/Post')
-const Deal=require('./Deal')
+const Client=require('./Client')
 
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Types;    
@@ -39,93 +39,67 @@ const path=require('path')
 
 
 
+const createClient=async(req,res) => {
 
-const createDeal=async(req,res) => {
-    console.log('createDeal started! req.body.good ',req.body)
-    // console.log('createDeal started! req.body.client',req.body.client)
-    // console.log('createDeal started! req.params ',req.params.good.titleDescription)
-    // console.log('createDeal started! req.params ',req.params.client.shopName)
-    // console.log('createDeal started! req ',req)
     
-
+    // console.log('createClient started!',req.body)
+    // console.log('createClient started!123',req.file)
     const posts= await Post.findById(req.body._id)
-
+    
     if (
        
-        req.body.postavkaDate.length>2 && 
-        req.body.quantity.length>0
-        )
+        req.body.nameOrganization.length>2 && 
+        req.body.fio.length>2 && 
+        req.body.shopAddress.length>2)
     {
 
-     
-
-        await new Deal({
-            // location:'some location',
-            // address:'some address',
-            // title:'some address',
-            
-            // titleDescription:'some address',
-            
-            // quantity:34,
-            
-
-        
-            // payForm:'some address',
-       
-            // status:'ffafsafa',
-            
-
-   
-       
-           
-
-            good:req.body.good,
-            client:req.body.client,
-            
-            
-
-            postavkaDate:req.body.postavkaDate,
-            payForm:req.body.payForm,
-            consDateStart:req.body.consDateStart,
-            consDateEnd :req.body.consDateEnd,
-
-            good:req.body.good,
-            client:req.body.client,
-            
-            quantity:req.body.quantity,
+        await new Client({
+            image:`/images/posts/${req.file.filename}`,    //Фото магазина
+            image2:req.body.image2,   //Фото удв собственника магазина
+            nameOrganization:req.body.nameOrganization,
+            shopName:req.body.shopName,
+            shopAddress:req.body.shopAddress,
+            fio:req.body.fio,
+            phone:req.body.phone,
+            iin:req.body.iin,
 
 
 
-
-
-
+            // image:`/images/posts/${req.file.filename}`,
+            // nameOrganization:req.body.nameOrganization,
+            // fioOrder:req.body.fioOrder,
+            // address:req.body.address,            
+            // postavkaDate:req.body.postavkaDate,
+            // payForm:req.body.payForm,
+            // consDateStart:req.body.consDateStart,
+            // consDateEnd :req.body.consDateEnd,
+            // good:req.body.good,
+            // quantity:req.body.quantity,
             // address:req.body.address,
             // title:req.body.title,
             // category:req.body.category,
             // titleDescription:req.body.titleDescription,
             // posttext:req.body.posttext,
-            author:req.user._id,
-            status:'inProgress'
+            // author:req.user._id,
+            // status:'inProgress'
         }).save()
 
-            const posts= await Post.findById(req.body.good)
-            console.log('posts from createDeal=',posts)
-            
-            let defQuan=Number(posts.defaultQuantity)
-            console.log('defQuan= ' ,typeof(defQuan),defQuan)
-            console.log('req body quantity= ' ,typeof(req.body.quantity),req.body.quantity)
+            // const posts= await Post.findById(req.body.good)
+            // let defQuan=Number(posts.defaultQuantity)
+            // console.log('defQuan= ' ,typeof(defQuan),defQuan)
+            // console.log('req body quantity= ' ,typeof(req.body.quantity),req.body.quantity)
     
-            posts.updateOne(
-                { $set:
-                    {
-                      defaultQuantity:defQuan-Number(req.body.quantity)
+            // posts.updateOne(
+            //     { $set:
+            //         {
+            //           defaultQuantity:defQuan-Number(req.body.quantity)
                      
-                    }
-                 }
-            ).exec()
+            //         }
+            //      }
+            // ).exec()
 
-       
         res.redirect(`/profile/${req.user._id}`)
+        
     }else
     {
         res.redirect('/new&error=1')
@@ -195,4 +169,4 @@ const createDeal=async(req,res) => {
 // }
 
 
-module.exports={createDeal}
+module.exports={createClient}
