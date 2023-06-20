@@ -27,6 +27,8 @@ const createPost=async(req,res) => {
             image:`/images/posts/${req.file.filename}`,
             author:req.user._id,
             defaultQuantity:req.body.quantity,
+            price:req.body.price,
+
             // image:`${req.file.destination}/${req.file.filename}`,
         }).save()
 
@@ -97,6 +99,7 @@ const editPost=async(req,res)=>{
             posts.posttext=req.body.posttext,
             posts.defaultQuantity=req.body.quantity,
             posts.author=req.user._id,
+            posts.price=req.body.price,
             posts.save()
             res.redirect(`/admin/${req.user._id}`)
     

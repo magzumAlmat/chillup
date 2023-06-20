@@ -80,12 +80,16 @@
                                         <tr>
                                         <th >Имя продавца:</th>
                                         <th >Дата поставки:</th>
-                                        <th >ФИО заказчика:</th>
+                                        
+                                      
                                         <th >Наименование организации:</th>
+                                        <th >Название магазина:</th>
                                         <th >Aдрес:</th>
+                                        
                                         <th >Наименование товара:</th>
                                         <th >Количество на складе:</th>
                                         <th >Заказаное количество:</th>
+                                        <th> Смотреть фото</th>
                                         <th >Форма оплаты:</th>
                                         <th >дата старта консигнации:</th>
                                         <th >дата конеца консигнации:</th>
@@ -97,7 +101,7 @@
                                     <tbody>
 
                     <%deal.forEach(i=>{
-                        console.log('ID= ',i._id)
+                        console.log('ID= ',i)
                         // console.log('i.author._id= ',i)
                         // console.log('user._id= ',user.full_name)
                         if(String(i.author._id)===String(user._id)){
@@ -108,12 +112,22 @@
                                      
                                         <td><%=i.author.full_name%></td>
                                         <td><%=i.postavkaDate%></td>
-                                        <td><%=i.fioOrder%></td>
-                                        <td><%=i.nameOrganization%></td>
-                                        <td><%=i.address%></td>
-                                        <td><%=i.good.titleDescription%></td>
+                                        
+                                        <td><%=i.client.nameOrganization%></td>
+                                        <td><%=i.client.shopName%></td>
+                                        <td><%=i.client.shopAddress%></td>
+
+                                        <td><%=i.good.title%></td>
                                         <td><%=i.good.defaultQuantity%></td>
                                         <td><%=i.quantity%></td>
+                                       
+                                       
+                                        <td>
+                                            <a href="<%=i.good.image%>">Смотреть</a>
+                                            </td>
+
+                                        
+
                                         <td><%=i.payForm%></td>
                                         <td><%=i.consDateStart%></td>
                                         <td><%=i.consDateEnd%></td>

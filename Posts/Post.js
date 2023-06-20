@@ -10,7 +10,8 @@ const PostSchema=new mongoose.Schema({
     author:{type:Schema.Types.ObjectId,ref: "Users"},
     posttext:String,
     defaultQuantity:Number,
-    date:{default:Date.now,type:Date}
+    date:{default:Date.now,type:Date},
+    price:Number,
 })
 
 module.exports = mongoose.model('post',PostSchema)

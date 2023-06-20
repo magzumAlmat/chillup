@@ -46,10 +46,6 @@ const createDeal=async(req,res) => {
     // console.log('createDeal started! req.params ',req.params.good.titleDescription)
     // console.log('createDeal started! req.params ',req.params.client.shopName)
     // console.log('createDeal started! req ',req)
-    
-
-    const posts= await Post.findById(req.body._id)
-
     if (
        
         req.body.postavkaDate.length>2 && 
@@ -93,12 +89,6 @@ const createDeal=async(req,res) => {
             client:req.body.client,
             
             quantity:req.body.quantity,
-
-
-
-
-
-
             // address:req.body.address,
             // title:req.body.title,
             // category:req.body.category,

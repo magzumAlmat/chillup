@@ -25,14 +25,25 @@
                                     <a class="" href="/sync">Синхронизация товаров</a>
                                 </li>
                                 <li class="nav-tem">
-                                    <a class="" href="/syncclient">Синхронизация магазинов</a>
-                                </li>
-                                <li class="nav-tem">
                                     <a class="" href="/addBlog">Добавить товар</a>
                                 </li>
                                 <li class="nav-tem">
+                                    <a class="" href="/syncclient">Синхронизация магазинов</a>
+                                </li>
+                                <li class="nav-item">
+                            
+                                    <a class='nav-link' href="/createclient" >Создать клиента</a>
+                                </li>
+                                
+                                <li class="nav-tem">
                                     <a href="/alldeals/" class="nav-link">
                                         Все сделки
+                                    </a>
+                                </li>
+
+                                <li class="nav-tem">
+                                    <a href="/allclients/" class="nav-link">
+                                        Все магазины
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -79,15 +90,29 @@
 
 
                 <div class="col-sm-4">
-                    <div class="card">
-                        <img src="<%=item.image%>" class="card-img-top" alt="..." height="200">
+                    <div class="card" style="width: 22rem;">
+                        <img src="<%=item.image%>" class="card-img-top" alt="..." >
                         <div class="card-body">
-                            <h5 class="card-title">
+                            <h6 class="card-title">
                                 <%=item.title%>
-                            </h5>
+                            </h6>
 
-                            <p class="card-text"><%=item.titleDescription%></p>
-                           
+                            <h6 class="card-text"><%=item.titleDescription%></h6>
+
+                            <li class="list-group-item">Дата создания: <%=item.date%></li>
+                            <li class="list-group-item">Количество штук: <%=item.defaultQuantity%></li>
+                            <li class="list-group-item">Категория товара: <%=item.category.name%></li>
+                            <li class="list-group-item">Цена товара: <%=item.price%></li>
+                        
+                            
+                          
+                      
+
+                             
+                             
+
+
+                            </div>
                             <div class="dropdown">
                                        
                                        <button type="button" class="btn btn-primary">Редактировать</button>
@@ -103,32 +128,6 @@
                                             </form>
                                         </div>
                                     </div>
-                            <br>
-                                <p></p>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered ">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Дата создания:</th>
-                                                <th scope="col">Количество штук:</th>
-                                                <th scope="col">Категория товара:</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-
-                                                <td><%=item.date%></td>
-                                                <td><%=item.defaultQuantity%></td>
-                                                <td><%=item.category.name%></td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-
-                            </div>
                         </div>
 
                     </div>

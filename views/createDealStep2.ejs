@@ -94,13 +94,16 @@
        
 
         <div class="container">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Поиск имен..">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Поиск по наименованию магазина">
 
             <table id="myTable">
             <tr class="header">
-                <th style="width:30%;">Название маг</th>
-                <th style="width:30%;">Наименование организ</th>
-                <th style="width:60%;">Менеджер</th>
+                <th style="width:35%;">Название магазина</th>
+                <th style="width:15%;">Наименование организации</th>
+                <th style="width:15%;">Адрес организации</th>
+                <th style="width:10%;">Посмотреть фото</th>
+                <th style="width:40%;">Менеджер</th>
+                <th style="width:5%;">Действие</th>
             </tr>
             <% client.forEach(cat => {
                              
@@ -109,9 +112,18 @@
             <tr >
                 <td><%=cat.shopName%></td>
                 <td><%=cat.nameOrganization%></td>
+                <td><%=cat.shopAddress%></td>
+                <td>
+                    <a href="<%=cat.image%>">Смотреть</a>
+                       
+                    
+                    
+                    
+                </td>
                 <td><%=cat.manager%></td>
+
                 
-                <td onclick="redirectToDeal('<%=cat._id%>','<%=posts._id%>')">Выбрать</td>
+                <td onclick="redirectToDeal('<%=cat._id%>','<%=posts._id%>') " style="cursor: pointer;">Выбрать</td>
             </tr>
             <%
                           }  ) %>
@@ -183,6 +195,7 @@
         }
         }
 </script>
+
             <!-- <img alt="" class="line-1" src="https://static.overlay-tech.com/assets/217a8777-d638-4edd-9084-0293a36069e0.png"/> -->
        
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

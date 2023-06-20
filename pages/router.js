@@ -188,7 +188,7 @@ router.get('/syncclient',async (req,res) =>{
     const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
 
     // Credentials for the service account
-    const CREDENTIALS = JSON.parse(fs.readFileSync('/Users/billionare/Documents/ChillUp/pages/client_secret_301660699750-bs7edp1f9jnj4eg2derf6jees3qj6bk8.apps.googleusercontent.com.json'));
+    const CREDENTIALS = JSON.parse(fs.readFileSync('pages/client_secret_301660699750-bs7edp1f9jnj4eg2derf6jees3qj6bk8.apps.googleusercontent.com.json'));
 
     const getRow = async (email) => {
 
@@ -210,25 +210,6 @@ router.get('/syncclient',async (req,res) =>{
         for (let index = 0; index < rows.length; index++) {
             const row = rows[index];
                 console.log(row.shopName,row.nameOrganization,row.shopAddress,row.phone,row.author,row.date)
-        
-        
-                const deleteAllData = async () => {
-                    try {
-                      await Post.deleteMany();
-                      console.log('All Data successfully deleted');
-                    //   alert('Таблица Товаров удалена!')
-                    } catch (err) {
-                      console.log(err);
-                    }
-                  };
-        
-               
-                // console.log('this is after delete func',post,'post len ',post.length)
-                
-        
-                const client= await Client.find().populate('author')
-        
-               
                    const data={
                       
                        shopName:row.shopName,
@@ -237,42 +218,18 @@ router.get('/syncclient',async (req,res) =>{
                        phone:row.phone,
                        author:row.author,
                        date:row.date
-                   }
-                  
-
-
-                   
+                   } 
                    Client.updateMany(
-                    { nameOrganization:data.nameOrganization },              // The query to find existing records
+                    { nameOrganization:data.nameOrganization },   // The query to find existing records
                     { $set: { 
                         shopName:data.shopName,
                         nameOrganization:data.nameOrganization,
                         shopAddress:data.shopAddress,
                         phone:data.phone,
                         manager:data.author,
-                        date:data.date } },    // The update operation to set the fields
+                        date:data.date } },    
                     { upsert: true }                   // The option to perform an upsert
                   ).exec();
-                  
-                   
-
-             
-                    // if(client.length!=0){
-
-                    //     console.log('Данные найдены обновляю')
-                    //     Client.updateOne(
-                    //         { $set:
-                    //             {
-                    //                 number:data.number,
-                    //                 code:data.code,
-                    //                 name:data.name,
-                    //                 count:data.count,
-                    //                 unit:data.unit,
-                    //                 price:data.price
-                    //             }
-                    //          }
-                    //     ).exec()
-                  
                     
                 }
                 console.log('Record to Clients added')
@@ -285,15 +242,29 @@ router.get('/syncclient',async (req,res) =>{
     res.render("syncclient",{category:AllCategories,user:req.user?req.user:{}})
 })
 
+
+
+
+
+
 router.get('/createclient',async(req,res) =>{
-    
-
-
-
     const AllCategories=await categories.find()
     const user = await User.findById(req.params.id)
     const post= await Post.find().populate('category').populate('author')
     res.render("createClient",{posts:post,category:AllCategories,user:req.user?req.user:{}})
+})
+
+
+router.get('/allclients',async (req,res) =>{
+    console.log('this is req.body from  create dial= ',req.body)
+    const AllCategories=await categories.find()
+    const user = await User.findById(req.params.id)
+    
+    const deal= await Deal.find().populate('author').populate('good')
+    console.log('deal in alldeals',deal)
+    const posts= await Post.findById(req.params.id).populate('category').populate('author')
+    const client= await Client.find()
+    res.render("allClients",{client,deal,posts,category:AllCategories,user:req.user?req.user:{}})
 })
 //-------------------------------------------------------------------------
 
@@ -314,8 +285,16 @@ router.get('/adddeal',async (req,res) =>{
     const AllCategories=await categories.find()
     const user = await User.findById(req.params.id)
    
+
+    
+
+
+
+
+
     const posts= await Post.find().populate('category').populate('author')
     res.render("createDealStep1",{posts,category:AllCategories,user:req.user?req.user:{}})
+   
 })
 
 

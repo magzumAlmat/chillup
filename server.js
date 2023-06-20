@@ -6,6 +6,7 @@ const passport=require('passport')
 
 const logger = require('morgan')
 const app=express();
+const bodyParser=require('body-parser')
 
 require('./config/db')
 require('./config/passport')
@@ -44,6 +45,8 @@ app.use(require('./Posts/router'))
 app.use(require('./Rates/router'))
 app.use(require('./Deal/router'))
 app.use(require('./Client/router'))
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 const PORT=4000

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="/style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+
+        <div class="container">
+
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Chillup</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto"></ul>
+                    <span class="navbar-text">
+                        <ul class="navbar-nav mr-auto">
+
+                            <%if (user._id){ %>
+                                <!-- <li class="nav-tem">
+                                    <a class="" href="/sync">Синхронизация товаров</a>
+                                </li>
+                                <li class="nav-tem">
+                                    <a class="" href="/addBlog">Добавить товар</a>
+                                </li> -->
+                                <li class="nav-tem">
+                                    <a class="" href="/syncclient">Синхронизация магазинов</a>
+                                </li>
+                                <li class="nav-item">
+
+                                    <a class='nav-link' href="/createclient">Создать клиента</a>
+                                </li>
+
+                                <li class="nav-tem">
+                                    <a href="/alldeals/" class="nav-link">
+                                        Все сделки
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+
+                                    <div style="display: flex ; align-items: center;">
+                                        <h6><%=user.full_name%></h6>
+                                        <img src="/images/avatar.png" alt="" width="73" height="73">
+                                    </div>
+
+                                </li>
+                                <li class="nav-item">
+                                    <a class='nav-link' href="/api/signout/">
+                                        Выход
+                                    </a>
+                                </li>
+                            <%}else{%>
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register" style="">
+                                        Регистрация
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" style="" style="text-decoration: none;" href="/signin">Вход</a>
+                                </li>
+
+                            <%}%>
+                        </ul>
+                    </span>
+                </div>
+            </nav>
+
+            <div class="table-responsive">
+                <div class="">
+                    <div style="">
+
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+
+                                    <th>Наименование организации:</th>
+                                    <th>Название магазина:</th>
+                                    <th>Aдрес:</th>
+                                    <th>Ответственный оператор</th>
+                                    <th>Телефон</th>
+                                    <th>Дата создания</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <%client.forEach(i=>{
+                       %>
+                                    <tr>
+
+                                        <td><%=i.nameOrganization%></td>
+                                        <td><%=i.shopName%></td>
+                                        <td><%=i.shopAddress%></td>
+                                        <td><%=i.manager%></td>
+                                        <td><%=i.phone%></td>
+                                        <td><%=i.date%></td>
+
+
+                                    </tr>
+
+
+                                <%
+                                    
+                        })%>
+
+                            </tbody>
+                        </table>
+
+                        <div></div>
+                    </div>
+
+
+                </div>
+            </body>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+        </html>
+    </body>
+</html></div></div></body></body></html>
+
