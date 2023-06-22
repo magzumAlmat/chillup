@@ -91,8 +91,9 @@
             </nav>
         </div>
 
-       
+        <h6 class="container"><%=passSelectedRows%></h6>
 
+        <h1 id="sr" style="display: none;"><%=passSelectedRows%></h1>
         <div class="container">
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Поиск по наименованию магазина">
 
@@ -123,7 +124,7 @@
                 <td><%=cat.manager%></td>
 
                 
-                <td onclick="redirectToDeal('<%=cat._id%>','<%=posts._id%>') " style="cursor: pointer;">Выбрать</td>
+                <td onclick="redirectToDeal('<%=cat._id%>','<%=posts%>') " style="cursor: pointer;">Выбрать</td>
             </tr>
             <%
                           }  ) %>
@@ -168,10 +169,38 @@
 
 
         function redirectToDeal(id,id2) {
-        // Perform the action you want when a row is clicked
-        // For example, redirecting to a specific URL:
-        window.location.href = "/finishdeal/" + id+"/"+id2;
+            const selectedRows=document.getElementById("sr").innerHTML
+            console.log('selectedRows',selectedRows,'type',typeof(selectedRows))
+
+            const decodedString = decodeURIComponent(selectedRows);
+            const passRows= JSON.parse(decodedString);
+            // const passRows=encodeURIComponent(JSON.stringify(parseSelectedRows))
+           
+            // const decodedStringId = decodeURIComponent(id);
+            // const parseId= JSON.parse(decodedStringId);
+            // const passId=encodeURIComponent(JSON.stringify(parseId))
+
+           
+
         
+            
+
+            // console.log('passID=',passId ,'type',typeof(passId))
+            console.log('passRows=',passRows ,'type',typeof(passRows))
+            
+
+
+            
+           
+            // console.log('obj=',obj)
+            // const passobj=encodeURIComponent(JSON.stringify(obj))
+            // console.log('this obj passed to finish router',passobj)
+
+            const passData=encodeURIComponent(JSON.stringify(passRows)) 
+            window.location.href = `/finishdeal/data?id=${id}&goods=${passData}`
+
+
+
         }
         function myFunction() {
         // Объявить переменные

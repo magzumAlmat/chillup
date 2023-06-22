@@ -41,6 +41,9 @@
                 /* Добавить серый цвет фона для заголовка таблицы и при наведении курсора мыши */
                 background-color: #f1f1f1;
             }
+            .selected {
+                background-color: yellow;
+            }
         </style>
     </head>
     <body>
@@ -93,44 +96,104 @@
 
         <div class="container">
 
-            Создать функционал множественной выборки гудсов
-            ---------------------------------------------------------------------------------------
-            <br><br><br><br>
+            <br><br><br>
 
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Поиск Наименование продукта">
 
             <table id="myTable">
-
                 <tr class="header">
-                    <th style="width:30%;">Наименование</th>
-                    <th style="width:30%;">Кол-во затяжек</th>
-                    <th style="width:50%;">Описание</th>
-                    <th style="width:10%;">Действие</th>
+                    <th style="width:20%;">Наименование</th>
+                    <th style="width:20%;">Кол-во затяжек</th>
+                    <th style="width:30%;">Описание</th>
+                    <th style="width:20%;">Стоимость</th>
+                    
+                    <th style="width:5%;">Действие</th>
+                    <th style="width:5%;">Введите количество</th>
+
                 </tr>
                 <% posts.forEach(cat => {
                     if(cat.defaultQuantity!=0){
            // console.log('cat=', cat)
            %>
                 <tr>
+                  
                     <td><%=cat.title%></td>
                     <td><%=cat.category.name%></td>
                     <td><%=cat.titleDescription%></td>
-                    <td onclick="redirectToDeal('<%=cat._id%>')" style="cursor: pointer;">Выбрать</td>
+                    <td><%=cat.price%></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="number" id="count"/></td>
                 </tr>
             <%
                               }  }) %>
-            </table>
+        </table>
+
+
+        <button id='selectButton' onclick="getSelectedRows()">Get Selected Rows</button>
+
+        <br>
+
+       
+        <br>
 
 
         <br>
 
+       
+    </body>
+</html>
 
-        <br></body>
-</html></div></div>
-<script>function redirectToDeal(id) {
-    // Perform the action you want when a row is clicked
-    // For example, redirecting to a specific URL:
-    window.location.href = "/createdeal/" + id;
+<script>
+    function getSelectedRows() {
+
+    var table = document.getElementById('myTable');
+    var checkboxes = table.getElementsByTagName('input');
+    var selectedRows = [];
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].type === 'checkbox' && checkboxes[i].checked) {
+            var row = checkboxes[i].parentNode.parentNode;
+            var rowData = {
+
+                title: row.cells[0].innerText,
+                category: row.cells[1].innerText,
+                text: row.cells[2].innerText,
+                price: row.cells[3].innerText,
+                count: parseInt(document.getElementById("count").value)
+            };
+            selectedRows.push(rowData);
+            
+        }
+    }
+
+    
+    console.log('this is selected goods',selectedRows,typeof(selectedRows))
+    const strigyfiedSelectedRows=encodeURIComponent(JSON.stringify(selectedRows))
+    console.log('pass data= ',strigyfiedSelectedRows,typeof(strigyfiedSelectedRows))
+    
+    window.location.href = "/createdeal/data?=" + strigyfiedSelectedRows;
+
+  
+
+
+}</script>
+<script>
+    function redirectToDeal2(id) {
+
+    console.log('2 Client id= ', id)
+    var clientId=id
+   
+}</script>
+<script>
+    function redirectToDeal(selectedRows) {
+
+
+    const passdata = {
+        id: selectedRows.id,
+        count: selectedRows.count
+    }
+    console.log('passdata', passdata)
+    // window.location.href = "/createdeal/" + selectedRows.id+'/'+selectedRows.count;
 }
 function myFunction() { // Объявить переменные
     var input,
@@ -157,5 +220,5 @@ function myFunction() { // Объявить переменные
             }
         }
     }
-}</script><script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script></body></html></div></body></body></html>
+}</script><script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script></body> </html></div></body></body></html>
 

@@ -12,7 +12,8 @@ const Client=require('../Client/Client')
 const fs=require('fs')
 const keyjson=require('../googleSheets/client_secret_301660699750-bs7edp1f9jnj4eg2derf6jees3qj6bk8.apps.googleusercontent.com.json')
 
-
+const url = require('url');
+const querystring = require('querystring');
 const { google } = require('googleapis');
 
 const { GoogleSpreadsheet } = require('google-spreadsheet');
@@ -282,41 +283,73 @@ router.get('/allclients',async (req,res) =>{
 
 
 router.get('/adddeal',async (req,res) =>{
+    const client= await Client.find()
+    // console.log('clients ',client)
     const AllCategories=await categories.find()
     const user = await User.findById(req.params.id)
-   
-
-    
-
-
-
-
-
     const posts= await Post.find().populate('category').populate('author')
-    res.render("createDealStep1",{posts,category:AllCategories,user:req.user?req.user:{}})
+   
+    res.render("createDealStep1",{client,posts,category:AllCategories,user:req.user?req.user:{}})
    
 })
 
 
-router.get('/createdeal/:id/',async (req,res) =>{
-    console.log('this is req.body from  create dial= ',req.params)
+router.get('/createdeal/data',async (req,res) =>{
+    // console.log('id',req.params.data.id)
+    // console.log('id',req.params.data.name)
+    // console.log('id',req.params.data.age)
+    // console.log('id',req.params.data.count)
 
+    // const selectedRows = req.params;
+    // console.log('selected rows in createDrealStep2= ',selectedRows)
+    
+    const parsedUrl = url.parse(req.url);
+    const Rows = querystring.parse(parsedUrl.query);
+    const recordsString = Rows['']; // Access the value associated with the empty key
+    const selectedRows = JSON.parse(recordsString); // Parse the string as JSON
+    
+    console.log('1=  ',selectedRows);
+    const passSelectedRows=encodeURIComponent(JSON.stringify(selectedRows))  //превращаю в стринг обьект
+    // console.log('1= ',selectedRows,typeof(selectedRows))
+    // console.log('selected rows in createDrealStep2= ',selectedRows)
+    // console.log('parsed ROWS= ',rows)
+   
     const AllCategories=await categories.find()
     const user = await User.findById(req.params.id)
     const client= await Client.find()
     const posts= await Post.findById(req.params.id).populate('category').populate('author')
-    res.render("createDealStep2",{client,posts,category:AllCategories,user:req.user?req.user:{}})
+    res.render("createDealStep2",{passSelectedRows,client,posts,category:AllCategories,user:req.user?req.user:{}})
 })
 
 
-router.get('/finishdeal/:client/:good/',async (req,res) =>{
-    console.log('this is req.body from  finish dial= ',req.params)
+router.get('/finishdeal/data?:id?:goods?',async (req,res) =>{
+    
 
+
+    const Rows = req.query;
+    const ClientId=req.query.id;
+    const ChoosedGoods=req.query.goods;
+    const selectedRows = JSON.parse(ChoosedGoods); //1 Parse the string as JSON!!!!!
+    
+    console.log('2=  ',selectedRows);
+    // const modifiedStr = ChoosedGoods.slice(1, -1);
+    
+    const passObj=encodeURIComponent(JSON.stringify(selectedRows))  //превращаю в стринг обьект
+    
+    // console.log('Client ID:', ClientId);
+    // console.log('Goods:', modifiedStr,typeof(modifiedStr));
+
+    // console.log('this is req.query from  finish dial= ',req.query)
+  
+
+    // console.log('this is req.body from  finish dial!!!!= ',goods)
     const AllCategories=await categories.find()
     const user = await User.findById(req.params.id)
-    const client= await Client.findById(req.params.client)
-    const posts= await Post.findById(req.params.good).populate('category').populate('author')
-    res.render("createDealStep3",{client,posts,category:AllCategories,user:req.user?req.user:{}})
+    const client= await Client.findById(ClientId)
+    
+    console.log('client from router=',client,typeof(client))
+    // const posts= await Post.findById(req.params.good).populate('category').populate('author')
+    res.render("createDealStep3",{passObj,client,category:AllCategories,user:req.user?req.user:{}})
 })
 
 
