@@ -6,12 +6,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js" type="text/javascript"></script> 
         <link rel="stylesheet" type="text/css" href="/style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            .bordered {
+              border-collapse: collapse;
+              border: 1px solid #000;
+            }
+            
+            .bordered th,
+            .bordered td {
+              border: 1px solid #000;
+              padding: 5px;
+            }
+          </style>
     </head>
     <body>
-  
-        
+        <h5></h5>
+       
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">Chillup</a>
@@ -65,18 +78,27 @@
       
 
             <div class="container">
-                
+                <br><br>
+                <div id="good"></div>
                 <form action="/api/finishdeal/" method='POST' class="form" >
 
                     <br>
 
-                
+                     <input id='client' type="hidden" name="client" value=""/>
+                    <input id="passObj" type="hidden" name="good" value=""/>
+                    <input id="countpassObj" type="hidden" name="countpassObj" value=""/>
+
                     
-                    <h6 id="sr"><%=passObj%></h6>
-                    <h6 id="title">Наименование товара: <%=client.title%></h6>
-                    <h6 id="category">Количество затяжек: <%=client.category%></h6>
-                    <h6 id="opisanie">Описание: <%=client.text%></h6>
-                    <h6 id="count">Количество: <%=client.count%></h6>
+                    <h6 id="sr" style="display:none"><%=passObj%></h6>
+                    <h6 id="sr2" style="display:none"><%=clientID%></h6>
+                    
+
+
+                    <h6 id="title"><%=clientID.title%></h6>
+                    <h6 id="category"> <%=clientID.category%></h6>
+                    <h6 id="opisanie"> <%=clientID.text%></h6>
+                    <h6 id="count"> <%=clientID.count%></h6>
+                    <h6 id="price"></h6>
 
 
                        
@@ -86,7 +108,7 @@
                         <br>
                         <label for="start">Выберите Дату поставки:</label>
 
-                        <input type="date" id="start" name="postavkaDate" value="" min="" max="" >
+                        <input type="date" id="start" name="postavkaDate"  >
                         <br>
                   
                         <br>
@@ -147,23 +169,156 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script></body></html></div></div></div></div></body></html></div> </body></html></div></div></body></body></html>
 
         <script>
-            const selectedRows=document.getElementById("sr").innerHTML
-            const decodedString = decodeURIComponent(selectedRows);
-            console.log('decodedString= ',decodedString)
-            const passRows= JSON.parse(`[${decodedString}]`);
+            // JavaScript code
+        window.onload = function() {
+
+            // const client=document.getElementById("sr2").innerHTML
+            // const cl=String(client)
+            // console.log('client1=',cl)
+            // const decodedStringClient = decodeURIComponent(cl);
+            // console.log('client2=',decodedStringClient,typeof(decodedStringClient))
+            
+            // const obj = eval('(' + decodedStringClient+ ')');
+            // console.log('client3=',obj,typeof(obj))
 
 
-            console.log('passRows=',passRows[0] ,'type',typeof(passRows))
 
-            // var element = document.getElementById("title");
-            for (i in passRows[0][1]){
-                // element.innerHTML = `Наименование товара:${i.title}`;
-                console.log('i= ',i)
-            }
-           
+
+            console.log(decodeURIComponent('<%=passObj%>'),'This is',typeof('<%=passObj%>'))
+
+            const passRows=[JSON.parse(decodeURIComponent('<%=passObj%>'))]
+            // console.log(selectedRows,'111!!!')
+            // console.log('h6sr= ',h6sr)
+
+
+            // const selectedRows=document.getElementById("sr").innerHTML
+            
+            // const decodedString = decodeURIComponent(selectedRows);
+            // console.log('decodedString= ',decodedString)
+            // const passRows= JSON.parse(`[${decodedString}]`);
+
+            console.log('passRows=',passRows ,'type',typeof(passRows))
             
 
+
+            const data = {
+            title,
+            category,
+            count,
+            price,
+            
+            
+            };
+                      
+            const tableElement = document.createElement('table');
+            tableElement.classList.add('bordered');
+            
+
+            const headerRow = document.createElement('tr');
+            for (const key in data) 
+            {
+                const headerCell = document.createElement('th');
+                headerCell.textContent = key;
+                headerRow.appendChild(headerCell);
+            }
+            tableElement.appendChild(headerRow);
+
+            Object.keys(passRows[0]).forEach(key => 
+            {
+                const row = document.createElement('tr');
+                
+                const cell1 = document.createElement('td');
+                cell1.textContent = `${passRows[0][key].title}`;
+                row.appendChild(cell1);
+
+                const cell2 = document.createElement('td');
+                cell2.textContent = `${passRows[0][key].category}`;
+                row.appendChild(cell2);
+
+                const cell3 = document.createElement('td');
+                cell3.textContent = `${passRows[0][key].count}`;
+                row.appendChild(cell3);
+
+                const cell5 = document.createElement('td');
+                cell5.textContent = `${passRows[0][key].price}`;
+                row.appendChild(cell5);
+
+                tableElement.appendChild(row);
+            
+                
+            }
+            
+            )
+          
+            console.log('table= ',tableElement)
+            
+            // const goodDiv = document.getElementById('good');
+            // // goodDiv.appendChild(tableElement);
+            // document.table.appendChild(tableElement)
+
+
+
+
+           
+           
+            const inputElement = document.getElementById("passObj");
+            const inputElementCounts = document.getElementById("countpassObj");
+            const goodsArray=[]
+            const countsArray=[]
+            Object.keys(passRows[0]).forEach(key => {
+                console.log(key, passRows[0][key].id);
+                goodsArray.push(passRows[0][key].id)
+                countsArray.push(passRows[0][key].count)
+            })
+            inputElement.value =goodsArray;
+            inputElementCounts.value =countsArray;
+
+
+           
+
+
+            const client=document.getElementById("sr2").innerHTML
+            console.log('client from h6',client)
+            // const cl=String(client)
+            // console.log('client1=',cl)
+            // const decodedStringClient = decodeURIComponent(cl);
+            // console.log('client2=',decodedStringClient,typeof(decodedStringClient))
+            
+            // const obj = eval('(' + decodedStringClient+ ')');
+            // console.log('client3=',obj,typeof(obj))
+
+            const inputElement2 = document.getElementById("client");
+            inputElement2.value =client;
+            // console.log(key, passRows[0][key]);
+            // element.innerHTML = `Наименование товара:${passRows[0][key].title}`;
+
+                 // Create the table body with data rows
+             
+             
+
+
+                // element2.innerHTML = `Количество затяжек:${passRows[0][key].category}`;
+                // element3.innerHTML = `Описание товара:${passRows[0][key].opisanie}`;
+                // element4.innerHTML = `Количество:${passRows[0][key].count}`;
+                // element5.innerHTML = `Цена:${passRows[0][key].price}`;
+            
+            // });
+
+            
+           
+                
+            addTable(tableElement)
+           
+           
+        }
+        function addTable(tableElement)//from w w w  . java2s  . com
+        {
+            console.log('Work')
+            $('#good').append(tableElement);
+        }
+
         </script>
+        
     </body>
 </html>
 

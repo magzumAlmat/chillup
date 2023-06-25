@@ -41,84 +41,117 @@ const path=require('path')
 
 
 const createDeal=async(req,res) => {
-    console.log('createDeal started! req.body.good ',req.body)
+    // console.log('createDeal started! req.body.good ',req.body)
+    console.log(req.body,'!!!!!!!')
+   console.log('postavkaDate= ',req.body.postavkaDate)
+    console.log('req.body.client',req.body.client)
+    console.log('req.body.good',req.body.good)
+    console.log('req.body.countpassObj',req.body.countpassObj)
+    
+    const goodObj=[]
+    
+    const valueArray = req.body.good.split(',');
+
+    for (let i = 0; i < valueArray.length; i++) {
+        goodObj.push(valueArray[i]);
+        }
+  
+    const countObj=[]
+    
+    const valueArray2 = req.body.countpassObj.split(',');
+
+    for (let i = 0; i < valueArray2.length; i++) {
+        countObj.push(valueArray2[i]);
+    }
+    console.log(goodObj,typeof(goodObj))
+    console.log(countObj,typeof(countObj))
+
     // console.log('createDeal started! req.body.client',req.body.client)
     // console.log('createDeal started! req.params ',req.params.good.titleDescription)
     // console.log('createDeal started! req.params ',req.params.client.shopName)
     // console.log('createDeal started! req ',req)
     if (
-       
-        req.body.postavkaDate.length>2 && 
-        req.body.quantity.length>0
+        req.body.postavkaDate.length>2 
+        // req.body.quantity.length>0
         )
     {
 
-     
+        
 
-        await new Deal({
+        let good=goodObj.map((id,index) => (
+        {
+            id,
+            count:countObj[index]
+        }    
+            
+        ));
+        console.log('array with 2 objects = ',good)
+
+    // for (i in goodObj){
+    //     for (j in countObj){
+    //         console.log('id good',i)
+    //         console.log('count good',j)
+    //     }
+    // }
+
+    
+ 
+    await new Deal({
             // location:'some location',
             // address:'some address',
             // title:'some address',
-            
             // titleDescription:'some address',
-            
             // quantity:34,
-            
-
+            // payForm:'some address'
+       
+       
+            // client:req.body.client,
         
-            // payForm:'some address',
-       
-            // status:'ffafsafa',
-            
-
-   
-       
-           
-
-            good:req.body.good,
-            client:req.body.client,
-            
-            
-
             postavkaDate:req.body.postavkaDate,
             payForm:req.body.payForm,
             consDateStart:req.body.consDateStart,
             consDateEnd :req.body.consDateEnd,
-
-            good:req.body.good,
-            client:req.body.client,
             
-            quantity:req.body.quantity,
+            good:good,
+          
+            // client:req.body.client,
+
             // address:req.body.address,
             // title:req.body.title,
             // category:req.body.category,
             // titleDescription:req.body.titleDescription,
             // posttext:req.body.posttext,
+            
             author:req.user._id,
             status:'inProgress'
         }).save()
 
-            const posts= await Post.findById(req.body.good)
-            console.log('posts from createDeal=',posts)
+            // const posts= await Post.findById(req.body.good)
+            // console.log('posts from createDeal=',posts)
             
-            let defQuan=Number(posts.defaultQuantity)
-            console.log('defQuan= ' ,typeof(defQuan),defQuan)
-            console.log('req body quantity= ' ,typeof(req.body.quantity),req.body.quantity)
+            // let defQuan=Number(posts.defaultQuantity)
+            // console.log('defQuan= ' ,typeof(defQuan),defQuan)
+            // console.log('req body quantity= ' ,typeof(req.body.quantity),req.body.quantity)
     
-            posts.updateOne(
-                { $set:
-                    {
-                      defaultQuantity:defQuan-Number(req.body.quantity)
+
+            // posts.updateOne(
+            //     { $set:
+            //         {
+            //         good:{goodObj},
+            //         client:req.body.client,
+            //         quantity:{countObj},
+            //         defaultQuantity:defQuan-Number(req.body.quantity)
                      
-                    }
-                 }
-            ).exec()
+            //         }
+            //      }
+            // ).exec()
 
        
         res.redirect(`/profile/${req.user._id}`)
     }else
     {
-        res.redirect('/new&error=1')
+        res.status(200).end()
+        // res.redirect('/new&error=1')
     }
   
 }

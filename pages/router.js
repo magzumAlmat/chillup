@@ -303,6 +303,7 @@ router.get('/createdeal/data',async (req,res) =>{
     // const selectedRows = req.params;
     // console.log('selected rows in createDrealStep2= ',selectedRows)
     
+    
     const parsedUrl = url.parse(req.url);
     const Rows = querystring.parse(parsedUrl.query);
     const recordsString = Rows['']; // Access the value associated with the empty key
@@ -323,9 +324,6 @@ router.get('/createdeal/data',async (req,res) =>{
 
 
 router.get('/finishdeal/data?:id?:goods?',async (req,res) =>{
-    
-
-
     const Rows = req.query;
     const ClientId=req.query.id;
     const ChoosedGoods=req.query.goods;
@@ -348,8 +346,9 @@ router.get('/finishdeal/data?:id?:goods?',async (req,res) =>{
     const client= await Client.findById(ClientId)
     
     console.log('client from router=',client,typeof(client))
+    clientID=client._id
     // const posts= await Post.findById(req.params.good).populate('category').populate('author')
-    res.render("createDealStep3",{passObj,client,category:AllCategories,user:req.user?req.user:{}})
+    res.render("createDealStep3",{passObj,clientID,category:AllCategories,user:req.user?req.user:{}})
 })
 
 

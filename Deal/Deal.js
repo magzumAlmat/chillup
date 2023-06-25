@@ -6,7 +6,12 @@ const DealSchema=new mongoose.Schema({
     location:String,
     address:String,
     title:String,
-    good:{type:Schema.Types.ObjectId,ref:  "post"},
+    good:[
+        {
+            id:{type:Schema.Types.ObjectId,ref:  "post"},
+            count:String
+        }
+    ],
     
     key:Number,
     titleDescription:String,
